@@ -1,8 +1,17 @@
+/* Global variables */
+:root {
+  --header-height: 96px;
+}
+
+/* Base styles */
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: #111;
   background: #fff;
+
+  /* Offset page content for fixed header */
+  padding-top: var(--header-height);
 }
 
 h1, h2 {

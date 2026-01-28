@@ -10,7 +10,38 @@
   <link rel="stylesheet" href="src/styles/components.css">
 </head>
 
+<script>
+  let lastScrollY = window.scrollY;
+  const header = document.getElementById("site-header");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > lastScrollY && window.scrollY > 80) {
+      // scrolling down
+      header.classList.remove("expanded");
+      header.classList.add("shrunk");
+    } else {
+      // scrolling up
+      header.classList.remove("shrunk");
+      header.classList.add("expanded");
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>
+
+
 <body>
+
+    <header id="site-header" class="header expanded">
+  <div class="container header-inner">
+    <div class="logo">WinsTwo</div>
+    <nav class="nav">
+      <a href="#">Platform</a>
+      <a href="#">Use Cases</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
 
   <!-- HERO -->
   <section id="hero" class="dark">

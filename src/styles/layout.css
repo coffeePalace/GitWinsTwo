@@ -1,3 +1,33 @@
+/* HEADER BASE */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  transition: height 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* BIG header (top of page / scrolling up) */
+.header.expanded {
+  height: 96px;
+  box-shadow: none;
+}
+
+/* SMALL header (scrolling down) */
+.header.shrunk {
+  height: 64px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* HEADER CONTENT */
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 section {
   padding: 96px 0;
 }
@@ -26,4 +56,35 @@ section {
 
 .light {
   background: #f8fafc;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+}
+
+/* PHONE */
+@media (max-width: 600px) {
+  .header.expanded {
+    height: 72px;
+  }
+
+  .header.shrunk {
+    height: 56px;
+  }
+
+  .nav {
+    display: none; /* later we add hamburger */
+  }
+
+  section {
+    padding: 64px 0;
+  }
 }
