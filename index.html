@@ -2,83 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>WinsTwo</title>
+  <title>MaidenWins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="src/styles/base.css">
-  <link rel="stylesheet" href="src/styles/layout.css">
-  <link rel="stylesheet" href="src/styles/components.css">
-</head>
+  <!-- Premium serif font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<script>
-  let lastScrollY = window.scrollY;
-  const header = document.getElementById("site-header");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > lastScrollY && window.scrollY > 80) {
-      // scrolling down
-      header.classList.remove("expanded");
-      header.classList.add("shrunk");
-    } else {
-      // scrolling up
-      header.classList.remove("shrunk");
-      header.classList.add("expanded");
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --text-primary: #ffffff;
+      --text-muted: rgba(255,255,255,0.7);
+      --accent: #c7a46d;
     }
-    lastScrollY = window.scrollY;
-  });
-</script>
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg-color);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .wrapper {
+      padding: 40px 24px;
+      max-width: 720px;
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 64px;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
 
 <body>
 
-    <header id="site-header" class="header expanded">
-  <div class="container header-inner">
-    <div class="logo">WinsTwo</div>
-    <nav class="nav">
-      <a href="#">Platform</a>
-      <a href="#">Use Cases</a>
-      <a href="#">Contact</a>
-    </nav>
-  </div>
-</header>
+  <main class="wrapper">
+    <div class="brand">MaidenWins</div>
 
+    <p class="subtitle">
+      Carefully curating journeys worth waiting for.
+    </p>
 
-  <!-- HERO -->
-  <section id="hero" class="dark">
-    <div class="container">
-      <h1>WinsTwo</h1>
-      <p class="subtitle">
-        A calm, intelligent platform for better decisions.
-      </p>
+    <div class="location">
+      Based in India
     </div>
-  </section>
 
-  <!-- WHAT IT IS -->
-  <section id="about">
-    <div class="container two-col">
-      <div>
-        <h2>What is WinsTwo?</h2>
-        <p>
-          WinsTwo is designed for clarity — modular, future-ready,
-          and built to evolve without chaos.
-        </p>
-      </div>
-      <div class="card">
-        <p>
-          No noise. No clutter.<br>
-          Just clean structure and intent.
-        </p>
-      </div>
-    </div>
-  </section>
+    <footer>
+      © <span id="year"></span> MaidenWins. All rights reserved.
+    </footer>
+  </main>
 
-  <!-- CTA -->
-  <section id="cta" class="light">
-    <div class="container center">
-      <h2>Built to grow, not break</h2>
-      <a href="#" class="btn">Explore WinsTwo</a>
-    </div>
-  </section>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
