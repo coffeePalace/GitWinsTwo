@@ -1,1 +1,23 @@
-/* Cards, buttons, reusable UI will go here */
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.card {
+  padding: 32px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 500;
+}
