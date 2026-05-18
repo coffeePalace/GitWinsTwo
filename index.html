@@ -32,11 +32,33 @@
       justify-content: center;
       text-align: center;
       font-family: 'Inter', system-ui, sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Premium subtle grain texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      z-index: -1;
+
+      background-image:
+        repeating-radial-gradient(
+          circle at 0 0,
+          transparent 0,
+          rgba(255,255,255,0.05) 1px,
+          transparent 2px
+        );
     }
 
     .wrapper {
       padding: 40px 24px;
       max-width: 720px;
+      position: relative;
+      z-index: 1;
     }
 
     .brand {
@@ -72,7 +94,10 @@
 <body>
 
   <main class="wrapper">
-    <div class="brand">MaidenWins</div>
+
+    <div class="brand">
+      MaidenWins
+    </div>
 
     <p class="subtitle">
       Carefully curating journeys worth waiting for.
@@ -85,10 +110,12 @@
     <footer>
       © <span id="year"></span> MaidenWins. All rights reserved.
     </footer>
+
   </main>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
 
 </body>
