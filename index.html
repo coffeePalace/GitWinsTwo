@@ -5,7 +5,7 @@
   <title>MaidenWins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Premium fonts -->
+  <!-- Premium serif font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -32,33 +32,11 @@
       justify-content: center;
       text-align: center;
       font-family: 'Inter', system-ui, sans-serif;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Premium subtle texture background */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.18;
-
-      background-image:
-        radial-gradient(
-          rgba(255,255,255,0.06) 1px,
-          transparent 1px
-        );
-
-      background-size: 22px 22px;
     }
 
     .wrapper {
       padding: 40px 24px;
       max-width: 720px;
-      position: relative;
-      z-index: 1;
     }
 
     .brand {
@@ -94,10 +72,7 @@
 <body>
 
   <main class="wrapper">
-
-    <div class="brand">
-      MaidenWins
-    </div>
+    <div class="brand">MaidenWins</div>
 
     <p class="subtitle">
       Carefully curating journeys worth waiting for.
@@ -110,12 +85,10 @@
     <footer>
       © <span id="year"></span> MaidenWins. All rights reserved.
     </footer>
-
   </main>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
 </body>
