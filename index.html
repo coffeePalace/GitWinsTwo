@@ -5,87 +5,256 @@
   <title>MaidenWins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Premium serif font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-color: #0f172a;
-      --text-primary: #ffffff;
-      --text-muted: rgba(255,255,255,0.7);
-      --accent: #c7a46d;
+      --bg: #f8f5ef;
+      --card: rgba(255,255,255,0.72);
+      --text-primary: #1f2937;
+      --text-muted: #6b7280;
+      --accent: #b89258;
+      --border: rgba(184,146,88,0.18);
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
       min-height: 100vh;
-      background: var(--bg-color);
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(184,146,88,0.08), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(184,146,88,0.06), transparent 30%),
+        var(--bg);
       color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation */
+    header {
+      width: 100%;
+      padding: 28px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #111827;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-family: 'Inter', system-ui, sans-serif;
+      padding: 60px 24px;
     }
 
-    .wrapper {
-      padding: 40px 24px;
-      max-width: 720px;
+    .hero-box {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow:
+        0 10px 40px rgba(0,0,0,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      border-radius: 36px;
+      padding: 90px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: rgba(184,146,88,0.08);
+      border-radius: 50%;
+      top: -60px;
+      left: -60px;
+      filter: blur(30px);
     }
 
     .brand {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      margin-bottom: 18px;
+      color: #111827;
+    }
+
+    .divider {
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      margin: 0 auto 28px;
     }
 
     .subtitle {
-      font-size: 1.1rem;
-      line-height: 1.7;
+      max-width: 620px;
+      margin: auto;
+      font-size: 1.15rem;
+      line-height: 1.9;
       color: var(--text-muted);
-      margin-bottom: 48px;
+      margin-bottom: 42px;
     }
 
     .location {
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
       color: var(--accent);
-      margin-bottom: 64px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 500;
     }
 
+    /* Footer */
     footer {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 28px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #6b7280;
+      font-size: 0.92rem;
+      transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-box {
+        padding: 70px 28px;
+        border-radius: 28px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="wrapper">
-    <div class="brand">MaidenWins</div>
+  <header>
+    <div class="logo">MaidenWins</div>
 
-    <p class="subtitle">
-      Carefully curating journeys worth waiting for.
-    </p>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Experiences</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-    <div class="location">
-      Based in India
+  <section class="hero">
+    <div class="hero-box">
+
+      <h1 class="brand">MaidenWins</h1>
+
+      <div class="divider"></div>
+
+      <p class="subtitle">
+        Carefully curating journeys worth waiting for — refined travel,
+        meaningful experiences, and destinations chosen with intention.
+      </p>
+
+      <div class="location">
+        Based in India
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Destinations</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
     </div>
 
-    <footer>
+    <div class="copyright">
       © <span id="year"></span> MaidenWins. All rights reserved.
-    </footer>
-  </main>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
