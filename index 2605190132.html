@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic page setup -->
+  <meta charset="UTF-8" />
+  <title>MaidenWins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts:
+       Playfair Display = elegant heading font
+       Inter = modern body font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ======================================
+       GLOBAL COLOR VARIABLES
+       Easy place to change colors later
+    ====================================== */
+    :root {
+      --bg-color: #0f172a;
+      --section-bg: #172036;
+      --text-primary: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --accent: #c7a46d;
+    }
+
+    /* Remove spacing issues from browser defaults */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ======================================
+       BODY STYLING
+       Controls overall website appearance
+    ====================================== */
+    body {
+      background: var(--bg-color);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    /* ======================================
+       HERO SECTION (Top section)
+       This is your original landing area
+    ====================================== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .wrapper {
+      max-width: 720px;
+    }
+
+    /* Brand / company name */
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    /* Subtitle text */
+    .subtitle {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+
+    /* Location text */
+    .location {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 64px;
+    }
+
+    /* Footer copyright text */
+    footer {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ======================================
+       SECOND SECTION
+       Example content section below hero
+    ====================================== */
+    .info-section {
+      background: var(--section-bg);
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .section-container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+    }
+
+    .section-text {
+      color: var(--text-muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+        /* ======================================
+       WEBSITE FOOTER
+       Final section at bottom of website
+    ====================================== */
+    .site-footer {
+      background: #000;
+      color: white;
+      padding: 70px 24px 40px;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    /* Footer menu links */
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .footer-nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    /* Hover effect */
+    .footer-nav a:hover {
+      color: white;
+    }
+
+    /* Bottom copyright line */
+    .footer-bottom {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================================
+       HERO / LANDING SECTION
+       First screen users see
+  ====================================== -->
+  <section class="hero-section">
+
+    <main class="wrapper">
+
+      <!-- Brand Name -->
+      <div class="brand">
+        MaidenWins
+      </div>
+
+      <!-- Short company description -->
+      <p class="subtitle">
+        Carefully curating journeys worth waiting for.
+      </p>
+
+      <!-- Business location -->
+      <div class="location">
+        Based in India
+      </div>
+
+      <!-- Copyright footer -->
+      <footer>
+        © <span id="year"></span> MaidenWins. All rights reserved.
+      </footer>
+
+    </main>
+  </section>
+
+  <!-- ======================================
+       SECOND CONTENT SECTION
+       Additional information area
+  ====================================== -->
+  <section class="info-section">
+
+    <div class="section-container">
+
+      <!-- Section Heading -->
+      <h2 class="section-title">
+        Crafted with Purpose
+      </h2>
+
+      <!-- Random sample text -->
+      <p class="section-text">
+        Every meaningful journey begins with curiosity. We believe travel is not
+        simply movement between places, but a carefully designed experience that
+        leaves lasting impressions. Whether discovering hidden coastlines, quiet
+        mountain retreats, or unforgettable cultural moments, true journeys are
+        built with intention and care.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================
+       JAVASCRIPT SECTION
+       Automatically updates copyright year
+  ====================================== -->
+    <!-- ======================================
+       WEBSITE FOOTER
+       Bottom navigation and copyright area
+  ====================================== -->
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <!-- Footer Brand Name -->
+      <div class="footer-brand">
+        MaidenWins
+      </div>
+
+      <!-- Footer Navigation Links -->
+      <nav class="footer-nav">
+
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Journeys</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+
+      </nav>
+
+      <!-- Footer Bottom Text -->
+      <div class="footer-bottom">
+        © <span id="footerYear"></span> MaidenWins. Crafted with intention.
+      </div>
+
+    </div>
+
+  </footer>
+  
+<script>
+  // Get current year
+  const currentYear = new Date().getFullYear();
+
+  // Update hero section year
+  document.getElementById("year").textContent = currentYear;
+
+  // Update footer year
+  document.getElementById("footerYear").textContent = currentYear;
+</script>
+
+</body>
+
+</html>

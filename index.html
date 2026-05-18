@@ -2,55 +2,61 @@
 <html lang="en">
 
 <head>
-  <!-- Basic page setup -->
   <meta charset="UTF-8" />
   <title>MaidenWins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Fonts:
-       Playfair Display = elegant heading font
-       Inter = modern body font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* ======================================
-       GLOBAL COLOR VARIABLES
-       Easy place to change colors later
-    ====================================== */
     :root {
-      --bg-color: #0f172a;
-      --section-bg: #172036;
-      --text-primary: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.7);
-      --accent: #c7a46d;
+
+      /* BACKGROUNDS */
+      --bg-primary: #FAF5F0;
+      --section-bg: #F0D5C4;
+
+      /* TEXT */
+      --heading: #2B1810;
+      --body-text: rgba(122, 56, 32, 0.9);
+      --caption: rgba(192, 97, 58, 0.7);
+
+      /* TAGLINES */
+      --tagline: rgba(232, 168, 130, 0.85);
+      --ghost-tag: rgba(122, 56, 32, 0.42);
+
+      /* TAGS / PILLS */
+      --pill-bg: rgba(240, 213, 196, 0.65);
+      --pill-border: rgba(192, 97, 58, 0.22);
+
+      /* SHADOW */
+      --soft-shadow: 0 10px 35px rgba(43, 24, 16, 0.08);
     }
 
-    /* Remove spacing issues from browser defaults */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    /* ======================================
-       BODY STYLING
-       Controls overall website appearance
-    ====================================== */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: var(--bg-color);
-      color: var(--text-primary);
-      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-primary);
+      color: var(--heading);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
     }
 
-    /* ======================================
-       HERO SECTION (Top section)
-       This is your original landing area
-    ====================================== */
+    /* ==========================
+       HERO SECTION
+    ========================== */
+
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -61,79 +67,95 @@
     }
 
     .wrapper {
-      max-width: 720px;
+      max-width: 800px;
     }
 
-    /* Brand / company name */
+    .tag-pill {
+      display: inline-block;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      padding: 10px 22px;
+      border-radius: 999px;
+      color: var(--ghost-tag);
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
     .brand {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
+      color: var(--heading);
+      margin-bottom: 24px;
     }
 
-    /* Subtitle text */
     .subtitle {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 48px;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: var(--body-text);
+      max-width: 650px;
+      margin: auto;
+      margin-bottom: 40px;
     }
 
-    /* Location text */
     .location {
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
+      color: var(--tagline);
+      font-size: 0.9rem;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 64px;
+      letter-spacing: 0.2em;
+      margin-bottom: 60px;
+      font-weight: 500;
     }
 
-    /* Footer copyright text */
-    footer {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.5);
+    .hero-footer {
+      font-size: 0.9rem;
+      color: var(--caption);
     }
 
-    /* ======================================
-       SECOND SECTION
-       Example content section below hero
-    ====================================== */
+    /* ==========================
+       INFO SECTION
+    ========================== */
+
     .info-section {
-      background: var(--section-bg);
-      padding: 100px 24px;
-      text-align: center;
+      padding: 120px 24px;
     }
 
     .section-container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
+      background: var(--section-bg);
+      border-radius: 36px;
+      padding: 70px 50px;
+      box-shadow: var(--soft-shadow);
+      text-align: center;
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--heading);
       margin-bottom: 24px;
     }
 
     .section-text {
-      color: var(--text-muted);
-      line-height: 1.9;
-      font-size: 1.05rem;
-      max-width: 700px;
+      color: var(--body-text);
+      max-width: 720px;
       margin: auto;
+      line-height: 2;
+      font-size: 1.05rem;
     }
 
-        /* ======================================
-       WEBSITE FOOTER
-       Final section at bottom of website
-    ====================================== */
+    /* ==========================
+       FOOTER
+    ========================== */
+
     .site-footer {
-      background: #000;
-      color: white;
-      padding: 70px 24px 40px;
+      padding: 80px 24px 40px;
       text-align: center;
+      border-top: 1px solid rgba(192, 97, 58, 0.15);
     }
 
     .footer-container {
@@ -143,127 +165,138 @@
 
     .footer-brand {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      color: var(--heading);
       margin-bottom: 30px;
     }
 
-    /* Footer menu links */
     .footer-nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
 
     .footer-nav a {
-      color: rgba(255,255,255,0.8);
       text-decoration: none;
-      transition: 0.3s;
-      font-size: 0.95rem;
+      color: var(--body-text);
+      transition: 0.3s ease;
+      position: relative;
     }
 
-    /* Hover effect */
     .footer-nav a:hover {
-      color: white;
+      color: var(--heading);
     }
 
-    /* Bottom copyright line */
-    .footer-bottom {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
+    .footer-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background: var(--heading);
+      transition: 0.3s ease;
     }
+
+    .footer-nav a:hover::after {
+      width: 100%;
+    }
+
+    .footer-bottom {
+      color: var(--caption);
+      font-size: 0.9rem;
+    }
+
+    /* ==========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 768px) {
+      .section-container {
+        padding: 50px 28px;
+        border-radius: 24px;
+      }
+
+      .subtitle {
+        font-size: 1.05rem;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- ======================================
-       HERO / LANDING SECTION
-       First screen users see
-  ====================================== -->
+  <!-- HERO SECTION -->
   <section class="hero-section">
 
     <main class="wrapper">
 
-      <!-- Brand Name -->
+      <div class="tag-pill">
+        Curated Journeys
+      </div>
+
       <div class="brand">
         MaidenWins
       </div>
 
-      <!-- Short company description -->
       <p class="subtitle">
-        Carefully curating journeys worth waiting for.
+        Carefully curating journeys worth waiting for — meaningful escapes,
+        unforgettable experiences, and destinations chosen with intention.
       </p>
 
-      <!-- Business location -->
       <div class="location">
         Based in India
       </div>
 
-      <!-- Copyright footer -->
-      <footer>
+      <div class="hero-footer">
         © <span id="year"></span> MaidenWins. All rights reserved.
-      </footer>
+      </div>
 
     </main>
+
   </section>
 
-  <!-- ======================================
-       SECOND CONTENT SECTION
-       Additional information area
-  ====================================== -->
+  <!-- SECOND SECTION -->
   <section class="info-section">
 
     <div class="section-container">
 
-      <!-- Section Heading -->
       <h2 class="section-title">
         Crafted with Purpose
       </h2>
 
-      <!-- Random sample text -->
       <p class="section-text">
         Every meaningful journey begins with curiosity. We believe travel is not
-        simply movement between places, but a carefully designed experience that
-        leaves lasting impressions. Whether discovering hidden coastlines, quiet
-        mountain retreats, or unforgettable cultural moments, true journeys are
-        built with intention and care.
+        simply movement between places, but a thoughtfully curated experience
+        designed to leave lasting impressions. Whether hidden coastlines,
+        cultural retreats, or remarkable landscapes — every journey deserves care,
+        timing, and intention.
       </p>
 
     </div>
 
   </section>
 
-  <!-- ======================================
-       JAVASCRIPT SECTION
-       Automatically updates copyright year
-  ====================================== -->
-    <!-- ======================================
-       WEBSITE FOOTER
-       Bottom navigation and copyright area
-  ====================================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
 
     <div class="footer-container">
 
-      <!-- Footer Brand Name -->
       <div class="footer-brand">
         MaidenWins
       </div>
 
-      <!-- Footer Navigation Links -->
       <nav class="footer-nav">
-
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Journeys</a>
         <a href="#">Contact</a>
         <a href="#">Privacy</a>
-
       </nav>
 
-      <!-- Footer Bottom Text -->
       <div class="footer-bottom">
         © <span id="footerYear"></span> MaidenWins. Crafted with intention.
       </div>
@@ -271,17 +304,13 @@
     </div>
 
   </footer>
-  
-<script>
-  // Get current year
-  const currentYear = new Date().getFullYear();
 
-  // Update hero section year
-  document.getElementById("year").textContent = currentYear;
+  <script>
+    const currentYear = new Date().getFullYear();
 
-  // Update footer year
-  document.getElementById("footerYear").textContent = currentYear;
-</script>
+    document.getElementById("year").textContent = currentYear;
+    document.getElementById("footerYear").textContent = currentYear;
+  </script>
 
 </body>
 
