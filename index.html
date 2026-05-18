@@ -29,21 +29,13 @@
     }
 
     /* ====================================== BODY STYLING Controls overall website appearance ====================================== */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  z-index: -1;
-
+body {
+  background-color: var(--bg-color);
   background-image:
-    repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      rgba(255,255,255,0.6) 1px,
-      transparent 2px
-    );
+    radial-gradient(circle at 1px 1px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 0);
+  background-size: 24px 24px;
 }
 
     /* ====================================== HERO SECTION (Top section) This is your original landing area ====================================== */
