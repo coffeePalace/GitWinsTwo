@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MaidenWins</title>
+  <title>Explore | MaidenWins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Premium Fonts -->
@@ -132,21 +132,21 @@
     }
 
     /* ======================
-       HERO
+       PAGE CONTENT
     ====================== */
 
-    .hero {
+    .explore-section {
       flex: 1;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 80px 24px;
       position: relative;
     }
 
-    /* Soft luxury glow */
-    .hero::before {
+    /* Luxury glow */
+    .explore-section::before {
       content: "";
       position: absolute;
       width: 420px;
@@ -154,25 +154,24 @@
       background: rgba(184,146,88,0.08);
       border-radius: 50%;
       filter: blur(90px);
-      top: 20%;
+      top: 25%;
       left: 50%;
       transform: translateX(-50%);
       z-index: 0;
     }
 
-    .hero-content {
-      max-width: 850px;
+    .content {
+      max-width: 760px;
       position: relative;
       z-index: 1;
     }
 
-    .brand {
+    .title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
       font-weight: 600;
-      letter-spacing: 0.03em;
-      margin-bottom: 20px;
       color: #111827;
+      margin-bottom: 20px;
     }
 
     .divider {
@@ -187,21 +186,19 @@
       margin: 0 auto 32px;
     }
 
-    .subtitle {
-      max-width: 680px;
-      margin: auto;
-      font-size: 1.15rem;
+    .description {
+      font-size: 1.12rem;
       line-height: 1.9;
       color: var(--text-muted);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
-    .location {
+    .coming-soon {
       display: inline-block;
       color: var(--accent);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
     }
 
@@ -242,17 +239,13 @@
         font-size: 1.3rem;
       }
 
-      .brand {
-        font-size: 3rem;
+      .title {
+        font-size: 2.5rem;
       }
 
-      .subtitle {
+      .description {
         font-size: 1rem;
         line-height: 1.8;
-      }
-
-      .hero {
-        padding: 70px 24px;
       }
     }
   </style>
@@ -277,23 +270,26 @@
 
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- CONTENT -->
+  <section class="explore-section">
 
-    <div class="hero-content">
+    <div class="content">
 
-      <h1 class="brand">MaidenWins</h1>
+      <h1 class="title">
+        Explore
+      </h1>
 
       <div class="divider"></div>
 
-      <p class="subtitle">
-        Carefully curating journeys worth waiting for —
-        refined travel, meaningful experiences,
-        and destinations chosen with intention.
+      <p class="description">
+        A carefully curated collection of journeys,
+        experiences, and destinations is being prepared.
+        We believe meaningful travel deserves patience,
+        intention, and refinement.
       </p>
 
-      <div class="location">
-        Based in India
+      <div class="coming-soon">
+        Curated journeys coming soon
       </div>
 
     </div>
