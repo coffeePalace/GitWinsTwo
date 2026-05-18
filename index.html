@@ -124,6 +124,55 @@
       max-width: 700px;
       margin: auto;
     }
+
+        /* ======================================
+       WEBSITE FOOTER
+       Final section at bottom of website
+    ====================================== */
+    .site-footer {
+      background: #000;
+      color: white;
+      padding: 70px 24px 40px;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    /* Footer menu links */
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .footer-nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    /* Hover effect */
+    .footer-nav a:hover {
+      color: white;
+    }
+
+    /* Bottom copyright line */
+    .footer-bottom {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 
@@ -190,10 +239,49 @@
        JAVASCRIPT SECTION
        Automatically updates copyright year
   ====================================== -->
-  <script>
-    // Get current year and place it in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- ======================================
+       WEBSITE FOOTER
+       Bottom navigation and copyright area
+  ====================================== -->
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <!-- Footer Brand Name -->
+      <div class="footer-brand">
+        MaidenWins
+      </div>
+
+      <!-- Footer Navigation Links -->
+      <nav class="footer-nav">
+
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Journeys</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+
+      </nav>
+
+      <!-- Footer Bottom Text -->
+      <div class="footer-bottom">
+        © <span id="footerYear"></span> MaidenWins. Crafted with intention.
+      </div>
+
+    </div>
+
+  </footer>
+  
+<script>
+  // Get current year
+  const currentYear = new Date().getFullYear();
+
+  // Update hero section year
+  document.getElementById("year").textContent = currentYear;
+
+  // Update footer year
+  document.getElementById("footerYear").textContent = currentYear;
+</script>
 
 </body>
 
