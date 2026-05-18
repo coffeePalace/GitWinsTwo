@@ -13,11 +13,9 @@
   <style>
     :root {
       --bg: #f8f5ef;
-      --card: rgba(255,255,255,0.72);
       --text-primary: #1f2937;
       --text-muted: #6b7280;
       --accent: #b89258;
-      --border: rgba(184,146,88,0.18);
     }
 
     * {
@@ -42,7 +40,7 @@
       flex-direction: column;
     }
 
-    /* Top Navigation */
+    /* Header */
     header {
       width: 100%;
       padding: 28px 8%;
@@ -81,72 +79,68 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 60px 24px;
-    }
-
-    .hero-box {
-      width: 100%;
-      max-width: 900px;
       text-align: center;
-      background: var(--card);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.8);
-      box-shadow:
-        0 10px 40px rgba(0,0,0,0.05),
-        inset 0 1px 0 rgba(255,255,255,0.8);
-      border-radius: 36px;
-      padding: 90px 50px;
+      padding: 60px 24px;
       position: relative;
-      overflow: hidden;
     }
 
-    .hero-box::before {
+    /* Decorative glow */
+    .hero::before {
       content: "";
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 400px;
+      height: 400px;
       background: rgba(184,146,88,0.08);
       border-radius: 50%;
-      top: -60px;
-      left: -60px;
-      filter: blur(30px);
+      filter: blur(80px);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
     }
 
     .brand {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5rem);
+      font-size: clamp(3rem, 8vw, 5.5rem);
       font-weight: 600;
       letter-spacing: 0.03em;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       color: #111827;
     }
 
     .divider {
       width: 90px;
       height: 2px;
-      background: linear-gradient(to right, transparent, var(--accent), transparent);
-      margin: 0 auto 28px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--accent),
+        transparent
+      );
+      margin: 0 auto 32px;
     }
 
     .subtitle {
-      max-width: 620px;
+      max-width: 680px;
       margin: auto;
       font-size: 1.15rem;
       line-height: 1.9;
       color: var(--text-muted);
-      margin-bottom: 42px;
+      margin-bottom: 40px;
     }
 
     .location {
       display: inline-block;
-      padding: 12px 24px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.75);
       color: var(--accent);
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
     }
 
@@ -159,7 +153,6 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
-      background: rgba(255,255,255,0.5);
     }
 
     .footer-links {
@@ -197,9 +190,8 @@
         justify-content: center;
       }
 
-      .hero-box {
-        padding: 70px 28px;
-        border-radius: 28px;
+      .brand {
+        font-size: 3rem;
       }
 
       footer {
@@ -224,7 +216,8 @@
   </header>
 
   <section class="hero">
-    <div class="hero-box">
+
+    <div class="hero-content">
 
       <h1 class="brand">MaidenWins</h1>
 
@@ -240,6 +233,7 @@
       </div>
 
     </div>
+
   </section>
 
   <footer>
