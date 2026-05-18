@@ -29,11 +29,22 @@
     }
 
     /* ====================================== BODY STYLING Controls overall website appearance ====================================== */
-    body {
-      background: var(--bg-color);
-      color: var(--text-primary);
-      font-family: 'Inter', system-ui, sans-serif;
-    }
+body {
+  background-color: var(--bg-color);
+
+  /* Subtle luxury texture */
+  background-image:
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 0
+    );
+
+  background-size: 24px 24px;
+
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+}
 
     /* ====================================== HERO SECTION (Top section) This is your original landing area ====================================== */
     .hero-section {
@@ -186,7 +197,7 @@
     </div>
   </footer>
   <script> // Get current year const currentYear = new Date().getFullYear(); // Update hero section year document.getElementById("year").textContent = currentYear; // Update footer year document.getElementById("footerYear").textContent = currentYear; 
-    
+
   </script>
 </body>
 
