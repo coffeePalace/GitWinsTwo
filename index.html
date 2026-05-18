@@ -15,25 +15,18 @@
   <style>
     :root {
 
-      /* BACKGROUNDS */
-      --bg-primary: #FAF5F0;
-      --section-bg: #F0D5C4;
+      /* COLORS */
+      --bg: #FAF7F2;
+      --surface: #354E56;
+      --primary-text: #0F2143;
+      --accent: #8B6212;
+      --supporting: #43572E;
 
-      /* TEXT */
-      --heading: #2B1810;
-      --body-text: rgba(122, 56, 32, 0.9);
-      --caption: rgba(192, 97, 58, 0.7);
+      --body-text: rgba(15, 33, 67, 0.82);
+      --soft-border: rgba(15, 33, 67, 0.08);
+      --light-text: rgba(250, 247, 242, 0.85);
 
-      /* TAGLINES */
-      --tagline: rgba(232, 168, 130, 0.85);
-      --ghost-tag: rgba(122, 56, 32, 0.42);
-
-      /* TAGS / PILLS */
-      --pill-bg: rgba(240, 213, 196, 0.65);
-      --pill-border: rgba(192, 97, 58, 0.22);
-
-      /* SHADOW */
-      --soft-shadow: 0 10px 35px rgba(43, 24, 16, 0.08);
+      --shadow: 0 12px 40px rgba(15, 33, 67, 0.08);
     }
 
     * {
@@ -47,10 +40,10 @@
     }
 
     body {
-      background: var(--bg-primary);
-      color: var(--heading);
+      background: var(--bg);
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
+      color: var(--primary-text);
+      line-height: 1.7;
     }
 
     /* ==========================
@@ -70,79 +63,86 @@
       max-width: 800px;
     }
 
-    .tag-pill {
+    .tagline-pill {
       display: inline-block;
-      background: var(--pill-bg);
-      border: 1px solid var(--pill-border);
       padding: 10px 22px;
+      border: 1px solid rgba(139, 98, 18, 0.18);
       border-radius: 999px;
-      color: var(--ghost-tag);
+      color: var(--accent);
+      background: rgba(139, 98, 18, 0.06);
       font-size: 0.85rem;
-      margin-bottom: 28px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
+      margin-bottom: 28px;
     }
 
     .brand {
       font-family: 'Playfair Display', serif;
       font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 600;
-      color: var(--heading);
+      color: var(--primary-text);
       margin-bottom: 24px;
     }
 
     .subtitle {
-      font-size: 1.2rem;
-      line-height: 1.9;
-      color: var(--body-text);
-      max-width: 650px;
+      max-width: 680px;
       margin: auto;
-      margin-bottom: 40px;
+      color: var(--body-text);
+      font-size: 1.15rem;
+      line-height: 1.9;
+      margin-bottom: 42px;
     }
 
     .location {
-      color: var(--tagline);
-      font-size: 0.9rem;
+      color: var(--supporting);
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
+      font-size: 0.9rem;
       margin-bottom: 60px;
       font-weight: 500;
     }
 
     .hero-footer {
       font-size: 0.9rem;
-      color: var(--caption);
+      color: rgba(15, 33, 67, 0.55);
     }
 
     /* ==========================
-       INFO SECTION
+       CONTENT SECTION
     ========================== */
 
     .info-section {
-      padding: 120px 24px;
+      padding: 100px 24px;
     }
 
     .section-container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
-      background: var(--section-bg);
+      background: var(--surface);
       border-radius: 36px;
-      padding: 70px 50px;
-      box-shadow: var(--soft-shadow);
+      padding: 80px 60px;
       text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .section-label {
+      color: rgba(250,247,242,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
+      color: white;
       font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--heading);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .section-text {
-      color: var(--body-text);
-      max-width: 720px;
+      color: var(--light-text);
+      max-width: 760px;
       margin: auto;
       line-height: 2;
       font-size: 1.05rem;
@@ -153,20 +153,20 @@
     ========================== */
 
     .site-footer {
-      padding: 80px 24px 40px;
-      text-align: center;
-      border-top: 1px solid rgba(192, 97, 58, 0.15);
+      padding: 90px 24px 40px;
+      border-top: 1px solid var(--soft-border);
     }
 
     .footer-container {
       max-width: 1100px;
       margin: auto;
+      text-align: center;
     }
 
     .footer-brand {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      color: var(--heading);
+      color: var(--primary-text);
       margin-bottom: 30px;
     }
 
@@ -174,29 +174,29 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 28px;
+      gap: 30px;
       margin-bottom: 35px;
     }
 
     .footer-nav a {
       text-decoration: none;
-      color: var(--body-text);
+      color: rgba(15,33,67,0.75);
       transition: 0.3s ease;
       position: relative;
     }
 
     .footer-nav a:hover {
-      color: var(--heading);
+      color: var(--accent);
     }
 
     .footer-nav a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -5px;
+      bottom: -6px;
       width: 0;
       height: 1px;
-      background: var(--heading);
+      background: var(--accent);
       transition: 0.3s ease;
     }
 
@@ -205,15 +205,14 @@
     }
 
     .footer-bottom {
-      color: var(--caption);
+      color: rgba(15,33,67,0.55);
       font-size: 0.9rem;
     }
 
-    /* ==========================
-       MOBILE
-    ========================== */
+    /* MOBILE */
 
-    @media (max-width: 768px) {
+    @media(max-width:768px) {
+
       .section-container {
         padding: 50px 28px;
         border-radius: 24px;
@@ -223,28 +222,28 @@
         font-size: 1.05rem;
       }
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero-section">
 
     <main class="wrapper">
 
-      <div class="tag-pill">
+      <div class="tagline-pill">
         Curated Journeys
       </div>
 
-      <div class="brand">
+      <h1 class="brand">
         MaidenWins
-      </div>
+      </h1>
 
       <p class="subtitle">
-        Carefully curating journeys worth waiting for — meaningful escapes,
-        unforgettable experiences, and destinations chosen with intention.
+        Carefully curating journeys worth waiting for —
+        exceptional escapes, meaningful discoveries,
+        and experiences designed with intention.
       </p>
 
       <div class="location">
@@ -259,21 +258,24 @@
 
   </section>
 
-  <!-- SECOND SECTION -->
+  <!-- SECTION -->
   <section class="info-section">
 
     <div class="section-container">
+
+      <div class="section-label">
+        Thoughtfully Designed
+      </div>
 
       <h2 class="section-title">
         Crafted with Purpose
       </h2>
 
       <p class="section-text">
-        Every meaningful journey begins with curiosity. We believe travel is not
-        simply movement between places, but a thoughtfully curated experience
-        designed to leave lasting impressions. Whether hidden coastlines,
-        cultural retreats, or remarkable landscapes — every journey deserves care,
-        timing, and intention.
+        We believe extraordinary travel is never rushed.
+        Every destination, moment, and experience deserves
+        thoughtful curation — whether hidden coastlines,
+        wildlife encounters, remote retreats, or cultural discovery.
       </p>
 
     </div>
@@ -298,7 +300,8 @@
       </nav>
 
       <div class="footer-bottom">
-        © <span id="footerYear"></span> MaidenWins. Crafted with intention.
+        © <span id="footerYear"></span>
+        MaidenWins. Crafted with intention.
       </div>
 
     </div>
@@ -306,10 +309,10 @@
   </footer>
 
   <script>
-    const currentYear = new Date().getFullYear();
+    const year = new Date().getFullYear();
 
-    document.getElementById("year").textContent = currentYear;
-    document.getElementById("footerYear").textContent = currentYear;
+    document.getElementById("year").textContent = year;
+    document.getElementById("footerYear").textContent = year;
   </script>
 
 </body>
