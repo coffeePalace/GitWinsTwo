@@ -29,21 +29,21 @@
     }
 
     /* ====================================== BODY STYLING Controls overall website appearance ====================================== */
-body {
-  background-color: var(--bg-color);
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: -1;
 
-  /* Subtle luxury texture */
   background-image:
-    radial-gradient(
-      circle at 1px 1px,
-      rgba(255,255,255,0.03) 1px,
-      transparent 0
+    repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      rgba(255,255,255,0.06) 1px,
+      transparent 2px
     );
-
-  background-size: 24px 24px;
-
-  color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
 }
 
     /* ====================================== HERO SECTION (Top section) This is your original landing area ====================================== */
