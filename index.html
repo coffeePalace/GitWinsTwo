@@ -162,6 +162,28 @@ header::after {
   filter: blur(8px);
   opacity: 0.9;
 }
+/* Fine elegant center line */
+
+header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(320px, 45%);
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(184,146,88,0.45),
+      rgba(184,146,88,0.85),
+      rgba(184,146,88,0.45),
+      transparent
+    );
+}
 
 
     /* ======================
