@@ -31,77 +31,18 @@
     body {
       min-height: 100vh;
       font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left,
+        rgba(184,146,88,0.08),
+        transparent 35%),
+        radial-gradient(circle at bottom right,
+        rgba(184,146,88,0.06),
+        transparent 30%),
+        var(--bg);
+
       color: var(--text-primary);
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
-      position: relative;
-
-      background:
-        radial-gradient(
-          circle at top left,
-          rgba(184,146,88,0.08),
-          transparent 35%
-        ),
-
-        radial-gradient(
-          circle at bottom right,
-          rgba(184,146,88,0.06),
-          transparent 30%
-        ),
-
-        radial-gradient(
-          circle,
-          rgba(184,146,88,0.18) 1px,
-          transparent 1.2px
-        );
-
-      background-size:
-        auto,
-        auto,
-        42px 42px;
-
-      background-position:
-        top left,
-        bottom right,
-        center;
-
-      background-color: var(--bg);
-    }
-
-    /* Elegant luxury dot overlay */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(184,146,88,0.14) 1px,
-          transparent 1.2px
-        );
-
-      background-size: 42px 42px;
-
-      mask-image:
-        radial-gradient(
-          ellipse at center,
-          black 50%,
-          transparent 100%
-        );
-
-      -webkit-mask-image:
-        radial-gradient(
-          ellipse at center,
-          black 50%,
-          transparent 100%
-        );
-
-      opacity: 0.85;
     }
 
     /* ======================
@@ -147,6 +88,7 @@
       transition: color 0.3s ease;
     }
 
+    /* Elegant underline */
     header a::after {
       content: "";
       position: absolute;
@@ -171,6 +113,7 @@
       width: 100%;
     }
 
+    /* Logo */
     .logo {
       text-align: center;
     }
@@ -202,6 +145,7 @@
       position: relative;
     }
 
+    /* Soft luxury glow */
     .hero::before {
       content: "";
       position: absolute;
@@ -284,13 +228,6 @@
     ====================== */
 
     @media (max-width: 768px) {
-
-      body {
-        background-size:
-          auto,
-          auto,
-          34px 34px;
-      }
 
       header {
         height: 40px;
