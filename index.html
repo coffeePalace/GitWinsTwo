@@ -464,70 +464,70 @@
         transform: scale(0.8);
       }
     }
+    /* Elegant luxury dot grid */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(184,146,88,0.20) 1px,
+      transparent 1.2px
+    );
+
+  background-size: 38px 38px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 45%,
+      transparent 100%
+    );
+
+  opacity: 0.85;
+}
   </style>
 </head>
 
-<body>
+body {
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
 
-  <!-- Elegant Background Dots -->
-  <div class="background-dots">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
+  background:
+    radial-gradient(circle at top left,
+      rgba(184,146,88,0.08),
+      transparent 35%),
 
-  <!-- HEADER -->
-  <header>
+    radial-gradient(circle at bottom right,
+      rgba(184,146,88,0.06),
+      transparent 30%),
 
-    <div class="nav-left">
-      <a href="explore.html">Explore</a>
-    </div>
+    radial-gradient(
+      circle,
+      rgba(184,146,88,0.18) 1px,
+      transparent 1.2px
+    );
 
-    <div class="logo">
-      <a href="index.html">MaidenWins</a>
-    </div>
+  background-size:
+    auto,
+    auto,
+    38px 38px;
 
-    <div class="nav-right">
-      <a href="contact.html">Contact</a>
-    </div>
+  background-position:
+    top left,
+    bottom right,
+    center;
 
-  </header>
+  background-color: var(--bg);
 
-  <!-- HERO -->
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <h1 class="brand">MaidenWins</h1>
-
-      <div class="divider"></div>
-
-      <p class="subtitle">
-        Carefully curating journeys worth waiting for —
-        refined travel, meaningful experiences,
-        and destinations chosen with intention.
-      </p>
-
-      <div class="location">
-        Based in India
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="copyright">
-      © <span id="year"></span> MaidenWins. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
-
-</body>
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
 </html>
