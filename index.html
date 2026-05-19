@@ -43,6 +43,181 @@
       color: var(--text-primary);
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ======================
+       LUXURY BACKGROUND
+    ====================== */
+
+    .background-scene {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Abstract Partial Globe */
+    .globe-wrapper {
+      position: absolute;
+      right: -220px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 850px;
+      height: 850px;
+      opacity: 0.17;
+      animation: rotateGlobe 90s linear infinite;
+    }
+
+    .globe-svg {
+      width: 100%;
+      height: 100%;
+      filter: blur(0.4px);
+    }
+
+    .globe-line {
+      fill: none;
+      stroke: rgba(184,146,88,0.33);
+      stroke-width: 0.9;
+    }
+
+    .flight-arc {
+      fill: none;
+      stroke: rgba(184,146,88,0.16);
+      stroke-width: 1.2;
+      stroke-dasharray: 6 10;
+      animation: arcMove 18s linear infinite;
+    }
+
+    /* Aircraft */
+
+    .plane {
+      position: absolute;
+      width: 28px;
+      opacity: 0.12;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .plane svg {
+      width: 100%;
+      height: auto;
+      stroke: rgba(184,146,88,0.65);
+      fill: none;
+      stroke-width: 1.3;
+    }
+
+    .plane-1 {
+      top: 26%;
+      left: -80px;
+      animation: flyOne 42s infinite;
+    }
+
+    .plane-2 {
+      top: 68%;
+      left: -100px;
+      opacity: 0.08;
+      animation: flyTwo 58s infinite;
+    }
+
+    .plane-3 {
+      top: 50%;
+      left: -90px;
+      opacity: 0.06;
+      animation: flyThree 72s infinite;
+    }
+
+    /* Floating soft glow */
+    .ambient-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(184,146,88,0.06);
+      border-radius: 50%;
+      filter: blur(120px);
+      top: 15%;
+      right: 10%;
+      animation: floatGlow 18s ease-in-out infinite;
+    }
+
+    @keyframes rotateGlobe {
+      from {
+        transform: translateY(-50%) rotate(0deg);
+      }
+      to {
+        transform: translateY(-50%) rotate(360deg);
+      }
+    }
+
+    @keyframes arcMove {
+      from {
+        stroke-dashoffset: 0;
+      }
+      to {
+        stroke-dashoffset: -120;
+      }
+    }
+
+    @keyframes flyOne {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.12;
+      }
+      85% {
+        opacity: 0.12;
+      }
+      100% {
+        transform: translateX(120vw) translateY(-60px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes flyTwo {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.08;
+      }
+      85% {
+        opacity: 0.08;
+      }
+      100% {
+        transform: translateX(120vw) translateY(50px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes flyThree {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.06;
+      }
+      90% {
+        opacity: 0.06;
+      }
+      100% {
+        transform: translateX(120vw) translateY(-20px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes floatGlow {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(-20px, 25px);
+      }
     }
 
     /* ======================
@@ -53,7 +228,6 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-
       width: 100%;
       height: 50px;
       padding: 0 5%;
@@ -88,7 +262,6 @@
       transition: color 0.3s ease;
     }
 
-    /* Elegant underline */
     header a::after {
       content: "";
       position: absolute;
@@ -113,7 +286,6 @@
       width: 100%;
     }
 
-    /* Logo */
     .logo {
       text-align: center;
     }
@@ -145,7 +317,6 @@
       position: relative;
     }
 
-    /* Soft luxury glow */
     .hero::before {
       content: "";
       position: absolute;
@@ -163,7 +334,7 @@
     .hero-content {
       max-width: 850px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .brand {
@@ -229,6 +400,17 @@
 
     @media (max-width: 768px) {
 
+      .globe-wrapper {
+        width: 520px;
+        height: 520px;
+        right: -180px;
+        opacity: 0.12;
+      }
+
+      .plane-3 {
+        display: none;
+      }
+
       header {
         height: 40px;
         padding: 0 10px;
@@ -259,6 +441,54 @@
 </head>
 
 <body>
+
+  <!-- BACKGROUND SCENE -->
+  <div class="background-scene">
+
+    <div class="ambient-glow"></div>
+
+    <div class="globe-wrapper">
+      <svg class="globe-svg" viewBox="0 0 800 800">
+
+        <!-- Partial Globe -->
+        <circle class="globe-line" cx="400" cy="400" r="260" />
+
+        <ellipse class="globe-line" cx="400" cy="400" rx="260" ry="120"/>
+        <ellipse class="globe-line" cx="400" cy="400" rx="260" ry="180"/>
+
+        <ellipse class="globe-line" cx="400" cy="400" rx="120" ry="260"/>
+        <ellipse class="globe-line" cx="400" cy="400" rx="180" ry="260"/>
+
+        <!-- Flight Arcs -->
+        <path class="flight-arc"
+          d="M190 390 Q400 150 620 420" />
+
+        <path class="flight-arc"
+          d="M230 510 Q420 220 590 330" />
+
+      </svg>
+    </div>
+
+    <!-- Aircraft -->
+    <div class="plane plane-1">
+      <svg viewBox="0 0 64 64">
+        <path d="M8 34 L56 32 L40 26 L36 12 L30 12 L31 26 L16 24 Z"/>
+      </svg>
+    </div>
+
+    <div class="plane plane-2">
+      <svg viewBox="0 0 64 64">
+        <path d="M8 34 L56 32 L40 26 L36 12 L30 12 L31 26 L16 24 Z"/>
+      </svg>
+    </div>
+
+    <div class="plane plane-3">
+      <svg viewBox="0 0 64 64">
+        <path d="M8 34 L56 32 L40 26 L36 12 L30 12 L31 26 L16 24 Z"/>
+      </svg>
+    </div>
+
+  </div>
 
   <!-- HEADER -->
   <header>
