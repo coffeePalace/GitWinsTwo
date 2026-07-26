@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Explore | MaidenWins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f5ef;
+      --text-primary: #1f2937;
+      --text-muted: #6b7280;
+      --accent: #b89258;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left,
+        rgba(184,146,88,0.08),
+        transparent 35%),
+        radial-gradient(circle at bottom right,
+        rgba(184,146,88,0.06),
+        transparent 30%),
+        var(--bg);
+
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+    }
+
+            /* ======================
+   LUXURY HEADER DIVIDER
+====================== */
+
+header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(320px, 45%);
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(184,146,88,0.45),
+      rgba(184,146,88,0.85),
+      rgba(184,146,88,0.45),
+      transparent
+    );
+}
+
+    /* ======================
+       HEADER
+    ====================== */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      width: 100%;
+      height: 50px;
+      padding: 0 5%;
+
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+
+      background: rgba(248,245,239,0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: none;
+      overflow: visible;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 0.95rem;
+      font-weight: 400;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    /* Elegant underline */
+    header a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0%;
+      height: 1.5px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--accent),
+        transparent
+      );
+      transition: width 0.35s ease;
+    }
+
+    header a:hover {
+      color: #111827;
+    }
+
+    header a:hover::after {
+      width: 100%;
+    }
+
+    /* Logo */
+    .logo {
+      text-align: center;
+    }
+
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .logo a::after {
+      display: none;
+    }
+
+
+
+    /* ======================
+       PAGE CONTENT
+    ====================== */
+
+    .explore-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    /* Luxury glow */
+    .explore-section::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: rgba(184,146,88,0.08);
+      border-radius: 50%;
+      filter: blur(90px);
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+
+    .content {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--accent),
+        transparent
+      );
+      margin: 0 auto 32px;
+    }
+
+    .description {
+      font-size: 1.12rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+
+
+    
+header::after{
+  content:"";
+  position:absolute;
+  top:50px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:rgba(184,146,88,.18);
+}
+
+.journeys{
+  background:rgba(255,255,255,.28);
+  border-radius:24px;
+  padding:60px 40px;
+}
+
+
+/* ======================
+       FEATURED JOURNEYS
+    ====================== */
+
+    .journeys{
+      width:min(1400px,92%);
+      margin:20px auto 80px;
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-heading span{
+      color:var(--accent);
+      letter-spacing:.25em;
+      font-size:.72rem;
+      text-transform:uppercase;
+    }
+
+    .section-heading h2{
+      font-family:'Playfair Display',serif;
+      font-size:2.8rem;
+      margin-top:12px;
+      font-weight:600;
+    }
+
+    .section-divider{
+      width:90px;
+      height:2px;
+      margin:22px auto;
+      background:linear-gradient(to right,transparent,var(--accent),transparent);
+    }
+
+    .journey-card{
+      display:grid;
+      grid-template-columns:340px 1fr 250px;
+      background:#fff;
+      border-radius:18px;
+      overflow:hidden;
+      margin-bottom:32px;
+      box-shadow:0 15px 40px rgba(0,0,0,.06);
+    }
+
+    .journey-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .journey-info{
+      padding:40px;
+    }
+
+    .journey-info h3{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      margin-bottom:18px;
+    }
+
+    .journey-meta{
+      display:flex;
+      gap:10px;
+      color:#777;
+      margin-bottom:20px;
+      font-size:.95rem;
+    }
+
+    .journey-info p{
+      color:var(--text-muted);
+      line-height:1.9;
+    }
+
+    .journey-price{
+      background:#f2ece2;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .journey-price small{color:#777;}
+    .journey-price h4{
+      font-family:'Playfair Display',serif;
+      font-size:2.4rem;
+      margin:8px 0;
+    }
+    .journey-price span{
+      color:#777;
+      margin-bottom:24px;
+    }
+    .journey-price a{
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      padding:14px 28px;
+      border-radius:40px;
+    }
+
+
+    /* ======================
+       FOOTER
+    ====================== */
+
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .copyright {
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
+    /* ======================
+       MOBILE
+    ====================== */
+
+    @media (max-width: 768px) {
+
+      header {
+        height: 62px;
+        padding: 0 20px;
+      }
+
+      header a {
+        font-size: 0.88rem;
+      }
+
+      .logo a {
+        font-size: 1.3rem;
+      }
+
+      .title {
+        font-size: 2.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="nav-left">
+      <a href="explore.html">Explore</a>
+    </div>
+
+    <div class="logo">
+      <a href="index.html">MaidenWins</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </header>
+
+  <!-- CONTENT -->
+  <section class="explore-section">
+
+    <div class="content">
+
+      <h1 class="title">
+        Explore
+      </h1>
+
+      <div class="divider"></div>
+
+      <p class="description">
+        Extraordinary settings, uncompromising comfort.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="journeys">
+
+    <div class="section-heading">
+      
+      <h2>Slow mornings or spirited nights — always without equal.</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-image">
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200" alt="Japan">
+      </div>
+
+      <div class="journey-info">
+        <h3>Majestic Japan</h3>
+        <div class="journey-meta">
+          <span>11 Days</span><span>•</span><span>8 Cities</span><span>•</span><span>Luxury</span>
+        </div>
+        <p>Discover Tokyo, Kyoto, Osaka and Mount Fuji through carefully curated luxury experiences, exceptional hotels and unforgettable cultural encounters.</p>
+      </div>
+
+      <div class="journey-price">
+        <small>Starting From</small>
+        <h4>$11,050</h4>
+        <span>per traveller</span>
+        <a href="#">View Journey</a>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-image">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200" alt="Switzerland">
+      </div>
+
+      <div class="journey-info">
+        <h3>Swiss Alps Escape</h3>
+        <div class="journey-meta">
+          <span>9 Days</span><span>•</span><span>5 Cities</span><span>•</span><span>Luxury</span>
+        </div>
+        <p>Travel aboard scenic railways, stay in elegant alpine resorts and enjoy breathtaking mountain landscapes throughout Switzerland.</p>
+      </div>
+
+      <div class="journey-price">
+        <small>Starting From</small>
+        <h4>$8,490</h4>
+        <span>per traveller</span>
+        <a href="#">View Journey</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="copyright">
+      © <span id="year"></span> MaidenWins. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
