@@ -45,7 +45,13 @@ width:min(320px,45%);
 height:1px;
 background:linear-gradient(to right,transparent,rgba(184,146,88,.45),rgba(184,146,88,.9),rgba(184,146,88,.45),transparent);
 }
-.nav-right{display:flex;justify-content:flex-end}
+
+.nav-left,
+.nav-right {
+      display: flex;
+      align-items: center;
+    }
+
 header a{
 text-decoration:none;
 color:#4b5563;
@@ -203,11 +209,22 @@ font-size:.8rem;
 </head>
 <body>
 
-<header>
-<div><a href="explore.html">Explore</a></div>
-<div class="logo"><a href="index.html">MaidenWins</a></div>
-<div class="nav-right"><a href="contact.html">Contact</a></div>
-</header>
+  <!-- HEADER -->
+  <header>
+
+    <div class="nav-left">
+      <a href="explore.html">Explore</a>
+    </div>
+
+    <div class="logo">
+      <a href="index.html">MaidenWins</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </header>
 
 <section class="hero">
 <h1 class="title">Explore</h1>
