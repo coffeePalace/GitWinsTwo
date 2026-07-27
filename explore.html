@@ -12,290 +12,192 @@
 <style>
 :root{
 --bg:#f8f5ef;
---text:#1f2937;
---muted:#6b7280;
+--text-primary:#1f2937;
+--text-muted:#6b7280;
 --accent:#b89258;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-font-family:Inter,sans-serif;
+min-height:100vh;
+font-family:'Inter',sans-serif;
 background:
 radial-gradient(circle at top left,rgba(184,146,88,.08),transparent 35%),
 radial-gradient(circle at bottom right,rgba(184,146,88,.06),transparent 30%),
 var(--bg);
-color:var(--text);
+color:var(--text-primary);
+display:flex;
+flex-direction:column;
 }
 header{
-position:sticky;top:0;z-index:10;
+position:sticky;
+top:0;
+z-index:1000;
+height:50px;
+padding:0 5%;
 display:grid;
 grid-template-columns:1fr auto 1fr;
 align-items:center;
-height:50px;
-padding:0 5%;
 background:rgba(248,245,239,.78);
 backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
 }
 header::before{
 content:"";
 position:absolute;
-left:50%;
 bottom:0;
+left:50%;
 transform:translateX(-50%);
 width:min(320px,45%);
 height:1px;
-background:linear-gradient(to right,transparent,rgba(184,146,88,.45),rgba(184,146,88,.9),rgba(184,146,88,.45),transparent);
+background:linear-gradient(to right,transparent,rgba(184,146,88,.45),rgba(184,146,88,.85),rgba(184,146,88,.45),transparent);
 }
-
-.nav-left,
-.nav-right {
-      display: flex;
-      align-items: center;
-    }
-
+.nav-left,.nav-right{display:flex;align-items:center}
+.nav-right{justify-content:flex-end}
 header a{
 text-decoration:none;
 color:#4b5563;
+font-size:.95rem;
+font-weight:400;
 position:relative;
+transition:color .3s ease;
 }
+header a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-7px;
+width:0;
+height:1.5px;
+background:linear-gradient(to right,transparent,var(--accent),transparent);
+transition:width .35s ease;
+}
+header a:hover{color:#111827}
+header a:hover::after{width:100%}
 .logo{text-align:center}
 .logo a{
-font-family:"Playfair Display",serif;
+font-family:'Playfair Display',serif;
 font-size:1.65rem;
 font-weight:600;
 color:#111827;
 }
-.logo a:after{display:none}
-section.hero{
-padding:90px 24px 70px;
+.logo a::after{display:none}
+
+.explore-section{
+padding:80px 24px 60px;
 text-align:center;
-max-width:900px;
-margin:auto;
+position:relative;
 }
-.title{
-font-family:"Playfair Display",serif;
-font-size:clamp(2.8rem,6vw,4.5rem);
-margin-bottom:18px;
+.explore-section::before{
+content:"";
+position:absolute;
+width:420px;height:420px;
+background:rgba(184,146,88,.08);
+border-radius:50%;
+filter:blur(90px);
+top:20%;
+left:50%;
+transform:translateX(-50%);
 }
-.divider{
-width:90px;height:2px;
-margin:0 auto 30px;
-background:linear-gradient(to right,transparent,var(--accent),transparent);
-}
-.description{
-color:var(--muted);
-font-size:1.1rem;
-line-height:1.9;
-max-width:720px;
-margin:auto;
-}
-.coming{
-margin-top:35px;
-color:var(--accent);
-letter-spacing:.18em;
-text-transform:uppercase;
-font-size:.78rem;
-}
-.catalog{
-max-width:1200px;
-margin:auto;
-padding:10px 24px 80px;
-}
-.filters{
-display:flex;
-gap:20px;
-justify-content:center;
-flex-wrap:wrap;
-margin-bottom:40px;
-}
-.filter{
-display:flex;
-flex-direction:column;
-gap:8px;
-}
-label{
-font-family:"Playfair Display",serif;
-font-size:.95rem;
-}
+.content{position:relative;z-index:1;max-width:760px;margin:auto}
+.title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);margin-bottom:20px}
+.divider{width:90px;height:2px;background:linear-gradient(to right,transparent,var(--accent),transparent);margin:0 auto 32px}
+.description{font-size:1.12rem;line-height:1.9;color:var(--text-muted);margin-bottom:36px}
+.coming-soon{display:inline-block;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem}
+
+.catalog{max-width:1200px;width:100%;margin:0 auto;padding:20px 24px 70px}
+.filters{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:35px}
+.filter{display:flex;flex-direction:column;gap:8px}
+.filter label{font-family:'Playfair Display',serif}
 select{
-padding:12px 16px;
-border:1px solid rgba(184,146,88,.4);
-background:#fffdf9;
-border-radius:12px;
-font-family:Inter,sans-serif;
-min-width:220px;
+padding:12px 16px;border-radius:12px;border:1px solid rgba(184,146,88,.35);
+background:#fffdf9;font-family:Inter,sans-serif;min-width:220px;color:#444;
 }
 .card{
-display:flex;
-gap:24px;
-align-items:center;
-background:rgba(255,255,255,.65);
+display:flex;align-items:center;gap:22px;
+background:rgba(255,255,255,.55);
 backdrop-filter:blur(10px);
 border:1px solid rgba(184,146,88,.15);
 border-radius:20px;
 padding:20px;
-margin-bottom:24px;
+margin-bottom:22px;
 transition:.3s;
 }
-.card:hover{
-transform:translateY(-4px);
-box-shadow:0 18px 40px rgba(0,0,0,.08);
-}
-.card img{
-width:300px;
-height:200px;
-object-fit:cover;
-border-radius:16px;
-transition:.4s;
-}
-.card:hover img{transform:scale(1.04)}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.08)}
+.card img{width:310px;height:200px;object-fit:cover;border-radius:16px;transition:.4s}
+.card:hover img{transform:scale(1.03)}
 .info{flex:1}
-.info h2{
-font-family:"Playfair Display",serif;
-margin-bottom:6px;
-}
-.country{
-color:var(--accent);
-margin-bottom:16px;
-}
-.info p{
-color:var(--muted);
-line-height:1.8;
-margin-bottom:18px;
-}
-.tags{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-.tags span{
-padding:6px 12px;
-border:1px solid rgba(184,146,88,.35);
-border-radius:50px;
-font-size:.82rem;
-color:#6b7280;
-}
-.price{
-width:180px;
-text-align:right;
-}
-.price small{
-display:block;
-color:#888;
-margin-bottom:6px;
-}
-.amount{
-font-family:"Playfair Display",serif;
-font-size:2rem;
-margin-bottom:18px;
-}
-.btn{
-text-decoration:none;
-color:var(--accent);
-font-weight:600;
-}
-footer{
-text-align:center;
-padding:25px;
-border-top:1px solid rgba(0,0,0,.06);
-color:#9ca3af;
-font-size:.8rem;
-}
+.info h2{font-family:'Playfair Display',serif;font-size:2rem}
+.country{color:var(--accent);margin:6px 0 16px}
+.info p{color:var(--text-muted);line-height:1.8}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.tags span{padding:6px 12px;border-radius:999px;border:1px solid rgba(184,146,88,.35);font-size:.82rem}
+.price{text-align:right;width:180px}
+.price small{color:#888}
+.amount{font-family:'Playfair Display',serif;font-size:2rem;margin:10px 0 18px}
+.price a{text-decoration:none;color:var(--accent);font-weight:600}
+footer{border-top:1px solid rgba(0,0,0,.06);padding:20px;text-align:center;color:#9ca3af;font-size:.75rem}
+
 @media(max-width:900px){
 .card{flex-direction:column;align-items:flex-start}
-.card img{width:100%;height:240px}
+.card img{width:100%;height:230px}
 .price{text-align:left;width:auto}
 }
 </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
+<header>
+<div class="nav-left"><a href="explore.html">Explore</a></div>
+<div class="logo"><a href="index.html">MaidenWins</a></div>
+<div class="nav-right"><a href="contact.html">Contact</a></div>
+</header>
 
-    <div class="nav-left">
-      <a href="explore.html">Explore</a>
-    </div>
-
-    <div class="logo">
-      <a href="index.html">MaidenWins</a>
-    </div>
-
-    <div class="nav-right">
-      <a href="contact.html">Contact</a>
-    </div>
-
-  </header>
-
-<section class="hero">
+<section class="explore-section">
+<div class="content">
 <h1 class="title">Explore</h1>
 <div class="divider"></div>
-<p class="description">
-A carefully curated collection of journeys, experiences, and destinations is being prepared. We believe meaningful travel deserves patience, intention, and refinement.
-</p>
-<div class="coming">Curated Journeys Coming Soon</div>
+<p class="description">A carefully curated collection of journeys, experiences, and destinations is being prepared. We believe meaningful travel deserves patience, intention, and refinement.</p>
+<div class="coming-soon">Curated journeys coming soon</div>
+</div>
 </section>
 
 <section class="catalog">
 <div class="filters">
-<div class="filter">
-<label>Destination</label>
-<select id="destination">
-<option>Africa</option>
-<option>Asia</option>
-</select>
+<div class="filter"><label>Destination</label>
+<select id="dest"><option>Africa</option><option>Asia</option></select></div>
+<div class="filter"><label>Currency</label>
+<select><option selected>INR</option></select></div>
 </div>
-
-<div class="filter">
-<label>Currency</label>
-<select>
-<option selected>INR</option>
-</select>
-</div>
-</div>
-
 <div id="cards"></div>
 </section>
 
 <footer>© <span id="year"></span> MaidenWins. All rights reserved.</footer>
 
 <script>
-const journeys={
+const data={
 Africa:[
-{title:"Safari Adventure",country:"Kenya",price:"₹2,45,000",img:"https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900",desc:"Experience luxury safari camps, unforgettable wildlife encounters and breathtaking African sunsets.",tags:["7 Days","Luxury","Wildlife","Private Guide"]},
-{title:"Moroccan Escape",country:"Morocco",price:"₹1,95,000",img:"https://images.unsplash.com/photo-1548013146-72479768bada?w=900",desc:"Discover ancient medinas, boutique riads and golden Sahara landscapes in timeless elegance.",tags:["6 Days","Culture","Desert"]}
+{t:"Safari Adventure",c:"Kenya",p:"₹2,45,000",i:"https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900",d:"Experience luxury safari camps, unforgettable wildlife encounters and breathtaking African sunsets.",tags:["7 Days","Luxury","Wildlife"]},
+{t:"Moroccan Escape",c:"Morocco",p:"₹1,95,000",i:"https://images.unsplash.com/photo-1548013146-72479768bada?w=900",d:"Discover ancient medinas, boutique riads and the Sahara in timeless elegance.",tags:["6 Days","Culture","Desert"]}
 ],
 Asia:[
-{title:"Bali Retreat",country:"Indonesia",price:"₹1,25,000",img:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900",desc:"Relax among luxury villas, emerald rice terraces and secluded beaches.",tags:["5 Days","Luxury","Beach"]},
-{title:"Japan Discovery",country:"Japan",price:"₹2,10,000",img:"https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=900",desc:"Experience timeless traditions, modern cities and breathtaking seasonal landscapes.",tags:["8 Days","Culture","Premium"]}
-]
-};
-
+{t:"Bali Retreat",c:"Indonesia",p:"₹1,25,000",i:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900",d:"Luxury villas, rice terraces and secluded beaches.",tags:["5 Days","Beach","Luxury"]},
+{t:"Japan Discovery",c:"Japan",p:"₹2,10,000",i:"https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=900",d:"Experience timeless traditions and modern elegance.",tags:["8 Days","Culture","Premium"]}
+]};
 function render(){
-const dest=document.getElementById("destination").value;
-const wrap=document.getElementById("cards");
-wrap.innerHTML="";
-journeys[dest].forEach(j=>{
-wrap.innerHTML+=`
-<div class="card">
-<img src="${j.img}" alt="">
-<div class="info">
-<h2>${j.title}</h2>
-<div class="country">${j.country}</div>
-<p>${j.desc}</p>
-<div class="tags">${j.tags.map(t=>`<span>${t}</span>`).join("")}</div>
-</div>
-<div class="price">
-<small>Starting From</small>
-<div class="amount">${j.price}</div>
-<a href="#" class="btn">View Journey →</a>
-</div>
+let h="";
+data[dest.value].forEach(j=>{
+h+=`<div class="card">
+<img src="${j.i}">
+<div class="info"><h2>${j.t}</h2><div class="country">${j.c}</div><p>${j.d}</p><div class="tags">${j.tags.map(x=>`<span>${x}</span>`).join("")}</div></div>
+<div class="price"><small>Starting From</small><div class="amount">${j.p}</div><a href="#">View Journey →</a></div>
 </div>`;
 });
+cards.innerHTML=h;
 }
+dest.onchange=render;
 render();
-document.getElementById("destination").addEventListener("change",render);
-document.getElementById("year").textContent=new Date().getFullYear();
+year.textContent=new Date().getFullYear();
 </script>
-
 </body>
 </html>
