@@ -377,10 +377,20 @@ header::before {
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+<script>
+  const heroBg = document.querySelector(".hero");
+
+  window.addEventListener("scroll", () => {
+      heroBg.style.backgroundPositionY = `${window.scrollY * 0.2}px`;
+  });
+</script>
 
 </body>
 </html>
