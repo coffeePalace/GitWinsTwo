@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore | MaidenWins</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#f8f5ef;
+--text-primary:#1f2937;
+--text-muted:#6b7280;
+--accent:#b89258;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+min-height:100vh;
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left,rgba(184,146,88,.08),transparent 35%),
+radial-gradient(circle at bottom right,rgba(184,146,88,.06),transparent 30%),
+var(--bg);
+color:var(--text-primary);
+display:flex;
+flex-direction:column;
+}
+header{
+position:sticky;
+top:0;
+z-index:1000;
+height:50px;
+padding:0 5%;
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+background:rgba(248,245,239,.78);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+}
+header::before{
+content:"";
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:min(320px,45%);
+height:1px;
+background:linear-gradient(to right,transparent,rgba(184,146,88,.45),rgba(184,146,88,.85),rgba(184,146,88,.45),transparent);
+}
+.nav-left,.nav-right{display:flex;align-items:center}
+.nav-right{justify-content:flex-end}
+header a{
+text-decoration:none;
+color:#4b5563;
+font-size:.95rem;
+font-weight:400;
+position:relative;
+transition:color .3s ease;
+}
+header a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-7px;
+width:0;
+height:1.5px;
+background:linear-gradient(to right,transparent,var(--accent),transparent);
+transition:width .35s ease;
+}
+header a:hover{color:#111827}
+header a:hover::after{width:100%}
+.logo{text-align:center}
+.logo a{
+font-family:'Playfair Display',serif;
+font-size:1.65rem;
+font-weight:600;
+color:#111827;
+}
+.logo a::after{display:none}
+
+.explore-section{
+padding:80px 24px 60px;
+text-align:center;
+position:relative;
+}
+.explore-section::before{
+content:"";
+position:absolute;
+width:420px;height:420px;
+background:rgba(184,146,88,.08);
+border-radius:50%;
+filter:blur(90px);
+top:20%;
+left:50%;
+transform:translateX(-50%);
+}
+.content{position:relative;z-index:1;max-width:760px;margin:auto}
+.title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);margin-bottom:20px}
+.divider{width:90px;height:2px;background:linear-gradient(to right,transparent,var(--accent),transparent);margin:0 auto 32px}
+.description{font-size:1.12rem;line-height:1.9;color:var(--text-muted);margin-bottom:36px}
+
+/* ===== Catalog / Filters ===== */
+.catalog{max-width:1200px;width:100%;margin:0 auto;padding:20px 24px 70px}
+
+.filters{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:40px}
+
+.filter{display:flex;flex-direction:column;gap:9px}
+.filter label{
+font-family:'Playfair Display',serif;
+font-size:.95rem;
+color:#4b5563;
+letter-spacing:.02em;
+}
+
+/* Custom select styling */
+.select-wrap{
+position:relative;
+min-width:230px;
+}
+.select-wrap select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+width:100%;
+padding:14px 44px 14px 18px;
+border-radius:14px;
+border:1px solid rgba(184,146,88,.35);
+background:#fffdf9;
+font-family:'Inter',sans-serif;
+font-size:.95rem;
+color:#3f3a33;
+cursor:pointer;
+transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
+box-shadow:0 2px 10px rgba(184,146,88,.06);
+}
+.select-wrap select:hover{
+border-color:rgba(184,146,88,.6);
+box-shadow:0 4px 16px rgba(184,146,88,.12);
+}
+.select-wrap select:focus{
+outline:none;
+border-color:var(--accent);
+box-shadow:0 0 0 4px rgba(184,146,88,.18);
+}
+.select-wrap::after{
+content:"";
+position:absolute;
+right:18px;
+top:50%;
+width:11px;
+height:11px;
+border-right:2px solid var(--accent);
+border-bottom:2px solid var(--accent);
+transform:translateY(-70%) rotate(45deg);
+pointer-events:none;
+transition:transform .3s ease, top .3s ease;
+}
+.select-wrap:has(select:focus)::after{
+transform:translateY(-30%) rotate(-135deg);
+}
+.select-wrap select option{
+font-family:'Inter',sans-serif;
+padding:10px;
+}
+
+/* Journey container */
+.journey-container{
+background:rgba(255,255,255,.5);
+border:1px solid rgba(184,146,88,.18);
+border-radius:28px;
+padding:36px;
+box-shadow:0 20px 60px rgba(184,146,88,.07);
+}
+
+.card{
+display:flex;align-items:center;gap:22px;
+background:rgba(255,255,255,.65);
+backdrop-filter:blur(10px);
+border:1px solid rgba(184,146,88,.15);
+border-radius:20px;
+padding:20px;
+margin-bottom:22px;
+transition:.3s;
+}
+.card:last-child{margin-bottom:0}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.08)}
+.card img{width:310px;height:200px;object-fit:cover;border-radius:16px;transition:.4s}
+.card:hover img{transform:scale(1.03)}
+.info{flex:1}
+.info h2{font-family:'Playfair Display',serif;font-size:2rem}
+.country{color:var(--accent);margin:6px 0 16px}
+.info p{color:var(--text-muted);line-height:1.8}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.tags span{padding:6px 12px;border-radius:999px;border:1px solid rgba(184,146,88,.35);font-size:.82rem}
+.price{text-align:right;width:180px}
+.price small{color:#888}
+.amount{font-family:'Playfair Display',serif;font-size:2rem;margin:10px 0 18px}
+.price a{text-decoration:none;color:var(--accent);font-weight:600}
+footer{border-top:1px solid rgba(0,0,0,.06);padding:20px;text-align:center;color:#9ca3af;font-size:.75rem}
+
+@media(max-width:900px){
+.card{flex-direction:column;align-items:flex-start}
+.card img{width:100%;height:230px}
+.price{text-align:left;width:auto}
+.journey-container{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav-left"><a href="explore.html">Explore</a></div>
+<div class="logo"><a href="index.html">MaidenWins</a></div>
+<div class="nav-right"><a href="contact.html">Contact</a></div>
+</header>
+
+<section class="explore-section">
+<div class="content">
+<h1 class="title">Explore</h1>
+<p class="description">Slow mornings or spirited nights — always exceptional.</p>
+<div class="divider"></div>
+</div>
+</section>
+
+<section class="catalog">
+<div class="filters">
+<div class="filter">
+<label>Destination</label>
+<div class="select-wrap">
+<select id="dest">
+<option value="" selected>Destinations</option>
+<option value="Africa">Africa</option>
+<option value="Asia">Asia</option>
+</select>
+</div>
+</div>
+<div class="filter">
+<label>Currency</label>
+<div class="select-wrap">
+<select id="currency">
+<option value="INR" selected>₹ INR — Indian Rupee</option>
+<option value="USD">$ USD — US Dollar</option>
+<option value="EUR">€ EUR — Euro</option>
+<option value="GBP">£ GBP — British Pound</option>
+<option value="AED">د.إ AED — UAE Dirham</option>
+<option value="SGD">S$ SGD — Singapore Dollar</option>
+<option value="AUD">A$ AUD — Australian Dollar</option>
+<option value="JPY">¥ JPY — Japanese Yen</option>
+<option value="CHF">CHF — Swiss Franc</option>
+<option value="CNY">¥ CNY — Chinese Yuan</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="journey-container">
+<div id="cards"></div>
+</div>
+</section>
+
+<footer>© <span id="year"></span> MaidenWins. All rights reserved.</footer>
+
+<script>
+/* Base prices are stored in INR; converted live based on selected currency */
+const data={
+Africa:[
+{t:"Safari Adventure",c:"Kenya",p:245000,i:"https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900",d:"Experience luxury safari camps, unforgettable wildlife encounters and breathtaking African sunsets.",tags:["7 Days","Luxury","Wildlife"]},
+{t:"Moroccan Escape",c:"Morocco",p:195000,i:"https://images.unsplash.com/photo-1548013146-72479768bada?w=900",d:"Discover ancient medinas, boutique riads and the Sahara in timeless elegance.",tags:["6 Days","Culture","Desert"]}
+],
+Asia:[
+{t:"Himalayan Trek",c:"Nepal",p:165000,i:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900",d:"Journey through dramatic mountain trails, remote monasteries and unmatched Himalayan vistas.",tags:["9 Days","Adventure","Mountains"]},
+{t:"Bali Retreat",c:"Indonesia",p:125000,i:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900",d:"Luxury villas, rice terraces and secluded beaches.",tags:["5 Days","Beach","Luxury"]},
+{t:"Japan Discovery",c:"Japan",p:210000,i:"https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=900",d:"Experience timeless traditions and modern elegance.",tags:["8 Days","Culture","Premium"]}
+]};
+
+/* Approximate conversion rates from INR */
+const rates={
+INR:{rate:1,symbol:"₹"},
+USD:{rate:0.012,symbol:"$"},
+EUR:{rate:0.011,symbol:"€"},
+GBP:{rate:0.0095,symbol:"£"},
+AED:{rate:0.044,symbol:"د.إ"},
+SGD:{rate:0.016,symbol:"S$"},
+AUD:{rate:0.018,symbol:"A$"},
+JPY:{rate:1.8,symbol:"¥"},
+CHF:{rate:0.0107,symbol:"CHF "},
+CNY:{rate:0.086,symbol:"¥"}
+};
+
+function formatPrice(inrAmount,curr){
+const info=rates[curr];
+const converted=inrAmount*info.rate;
+const decimals=(curr==="JPY")?0:0;
+const formatted=Math.round(converted).toLocaleString(curr==="INR"?"en-IN":"en-US");
+return `${info.symbol}${formatted}`;
+}
+
+function render(){
+const destVal=dest.value;
+const currVal=currency.value;
+const list = destVal ? data[destVal] : [...data.Africa, ...data.Asia];
+let h="";
+list.forEach(j=>{
+h+=`<div class="card">
+<img src="${j.i}" alt="${j.t}">
+<div class="info"><h2>${j.t}</h2><div class="country">${j.c}</div><p>${j.d}</p><div class="tags">${j.tags.map(x=>`<span>${x}</span>`).join("")}</div></div>
+<div class="price"><small>Starting From</small><div class="amount">${formatPrice(j.p,currVal)}</div><a href="#">View Journey →</a></div>
+</div>`;
+});
+cards.innerHTML=h;
+}
+
+dest.onchange=render;
+currency.onchange=render;
+render();
+year.textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
