@@ -262,6 +262,60 @@ header::before {
   font-weight: 500;
 }
 
+.story-features{
+    margin-top:60px;
+    padding-top:45px;
+
+    border-top:1px solid rgba(184,146,88,.18);
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:30px;
+
+    text-align:center;
+}
+
+.story-feature{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.feature-icon{
+    font-size:2.4rem;
+    margin-bottom:18px;
+}
+
+.story-feature h4{
+    font-family:'Playfair Display',serif;
+    font-size:1.1rem;
+    font-weight:600;
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.story-feature span{
+    font-size:.92rem;
+    line-height:1.7;
+    color:#6b7280;
+}
+
+@media(max-width:900px){
+
+.story-features{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.story-features{
+    grid-template-columns:1fr;
+}
+
+}
+
 .journey-highlights{
     padding:120px 8%;
     background:rgba(248,245,239,0.78);
@@ -455,6 +509,39 @@ header::before {
 
       <p>
         Every detail taken care of, so you're free to unwind and return renewed.
+        <div class="story-features">
+
+  <div class="story-feature">
+    <div class="feature-icon">🛎️</div>
+    <h4>Concierge Planning</h4>
+    <span>Every journey tailored from start to finish.</span>
+  </div>
+
+  <div class="story-feature">
+    <div class="feature-icon">👥</div>
+    <h4>Small Groups</h4>
+    <span>Travel with fewer guests for a more personal experience.</span>
+  </div>
+
+  <div class="story-feature">
+    <div class="feature-icon">✨</div>
+    <h4>Curated Experiences</h4>
+    <span>Authentic moments selected beyond the typical itinerary.</span>
+  </div>
+
+  <div class="story-feature">
+    <div class="feature-icon">🚘</div>
+    <h4>Luxury Transfers</h4>
+    <span>Private transportation for seamless travel.</span>
+  </div>
+
+  <div class="story-feature">
+    <div class="feature-icon">🌍</div>
+    <h4>Local Experts</h4>
+    <span>Knowledgeable guides who reveal every destination's hidden gems.</span>
+  </div>
+
+</div>
       </p>
 
     </div>
