@@ -7,207 +7,354 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---bg:#f8f5ef;
---text-primary:#1f2937;
---text-muted:#6b7280;
---accent:#b89258;
+  --ink:#151a17;
+  --paper:#f1ece0;
+  --paper-soft:#e8e0cd;
+  --brass:#b08a4e;
+  --brass-light:#d3b378;
+  --emerald:#26443a;
+  --clay:#a15c3c;
+  --text-muted:#78725f;
+  --line:rgba(176,138,78,.35);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
 body{
-min-height:100vh;
-font-family:'Inter',sans-serif;
-background:
-radial-gradient(circle at top left,rgba(184,146,88,.08),transparent 35%),
-radial-gradient(circle at bottom right,rgba(184,146,88,.06),transparent 30%),
-var(--bg);
-color:var(--text-primary);
-display:flex;
-flex-direction:column;
+  min-height:100vh;
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(176,138,78,.10), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 20%, rgba(38,68,58,.08), transparent 55%),
+    var(--paper);
+  color:var(--ink);
+  display:flex;
+  flex-direction:column;
+  position:relative;
 }
+/* faint paper grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* ===== Header ===== */
 header{
-position:sticky;
-top:0;
-z-index:1000;
-height:50px;
-padding:0 5%;
-display:grid;
-grid-template-columns:1fr auto 1fr;
-align-items:center;
-background:rgba(248,245,239,.78);
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  height:64px;
+  padding:0 6%;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  background:rgba(241,236,224,.82);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
 }
-header::before{
-content:"";
-position:absolute;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-width:min(320px,45%);
-height:1px;
-background:linear-gradient(to right,transparent,rgba(184,146,88,.45),rgba(184,146,88,.85),rgba(184,146,88,.45),transparent);
-}
-.nav-left,.nav-right{display:flex;align-items:center}
+.nav-left,.nav-right{display:flex;align-items:center;gap:28px}
 .nav-right{justify-content:flex-end}
 header a{
-text-decoration:none;
-color:#4b5563;
-font-size:.95rem;
-font-weight:400;
-position:relative;
-transition:color .3s ease;
+  text-decoration:none;
+  color:var(--text-muted);
+  font-size:.72rem;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  position:relative;
+  transition:color .3s ease;
 }
 header a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-7px;
-width:0;
-height:1.5px;
-background:linear-gradient(to right,transparent,var(--accent),transparent);
-transition:width .35s ease;
+  content:"";
+  position:absolute;
+  left:0;bottom:-8px;
+  width:0;height:1px;
+  background:var(--brass);
+  transition:width .35s ease;
 }
-header a:hover{color:#111827}
+header a:hover{color:var(--ink)}
 header a:hover::after{width:100%}
 .logo{text-align:center}
 .logo a{
-font-family:'Playfair Display',serif;
-font-size:1.65rem;
-font-weight:600;
-color:#111827;
+  font-family:'Fraunces',serif;
+  font-size:1.4rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--ink);
 }
 .logo a::after{display:none}
 
+/* ===== Hero ===== */
 .explore-section{
-padding:80px 24px 60px;
-text-align:center;
-position:relative;
+  padding:104px 24px 72px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  z-index:1;
 }
-.explore-section::before{
-content:"";
-position:absolute;
-width:420px;height:420px;
-background:rgba(184,146,88,.08);
-border-radius:50%;
-filter:blur(90px);
-top:20%;
-left:50%;
-transform:translateX(-50%);
+.explore-section svg.graticule{
+  position:absolute;
+  top:0;left:50%;
+  transform:translateX(-50%);
+  width:min(1100px,140%);
+  height:100%;
+  opacity:.16;
+  pointer-events:none;
 }
-.content{position:relative;z-index:1;max-width:760px;margin:auto}
-.title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);margin-bottom:20px}
-.divider{width:90px;height:2px;background:linear-gradient(to right,transparent,var(--accent),transparent);margin:0 auto 32px}
-.description{font-size:1.12rem;line-height:1.9;color:var(--text-muted);margin-bottom:36px}
+.content{position:relative;z-index:1;max-width:780px;margin:auto}
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--brass);
+  margin-bottom:22px;
+  display:inline-block;
+}
+.title{
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
+  font-weight:500;
+  font-size:clamp(3rem,7vw,5.4rem);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.title em{font-style:italic;font-weight:400;color:var(--emerald)}
+.divider{
+  width:1px;height:54px;
+  background:linear-gradient(to bottom,transparent,var(--brass));
+  margin:0 auto 30px;
+}
+.description{
+  font-size:1.08rem;
+  line-height:1.85;
+  color:var(--text-muted);
+  max-width:520px;
+  margin:0 auto;
+}
 
 /* ===== Catalog / Filters ===== */
-.catalog{max-width:1200px;width:100%;margin:0 auto;padding:20px 24px 70px}
+.catalog{max-width:1180px;width:100%;margin:0 auto;padding:10px 24px 100px;position:relative;z-index:1}
 
-.filters{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:40px}
-
-.filter{display:flex;flex-direction:column;gap:9px}
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:0;
+  flex-wrap:wrap;
+  margin-bottom:56px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background:rgba(255,253,248,.55);
+  max-width:640px;
+  margin-left:auto;margin-right:auto;
+}
+.filter{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:16px 26px;
+  flex:1;
+  min-width:220px;
+  position:relative;
+}
+.filter + .filter::before{
+  content:"";
+  position:absolute;
+  left:0;top:14px;bottom:14px;
+  width:1px;
+  background:var(--line);
+}
 .filter label{
-font-family:'Playfair Display',serif;
-font-size:.95rem;
-color:#4b5563;
-letter-spacing:.02em;
+  font-family:'Space Mono',monospace;
+  font-size:.64rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--brass);
 }
-
-/* Custom select styling */
-.select-wrap{
-position:relative;
-min-width:230px;
-}
+.select-wrap{position:relative}
 .select-wrap select{
-appearance:none;
--webkit-appearance:none;
--moz-appearance:none;
-width:100%;
-padding:14px 44px 14px 18px;
-border-radius:14px;
-border:1px solid rgba(184,146,88,.35);
-background:#fffdf9;
-font-family:'Inter',sans-serif;
-font-size:.95rem;
-color:#3f3a33;
-cursor:pointer;
-transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
-box-shadow:0 2px 10px rgba(184,146,88,.06);
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  width:100%;
+  padding:6px 30px 4px 0;
+  border:none;
+  border-bottom:1px solid transparent;
+  background:transparent;
+  font-family:'Fraunces',serif;
+  font-size:1.05rem;
+  color:var(--ink);
+  cursor:pointer;
+  transition:border-color .25s ease;
 }
-.select-wrap select:hover{
-border-color:rgba(184,146,88,.6);
-box-shadow:0 4px 16px rgba(184,146,88,.12);
-}
+.select-wrap select:hover,
 .select-wrap select:focus{
-outline:none;
-border-color:var(--accent);
-box-shadow:0 0 0 4px rgba(184,146,88,.18);
+  outline:none;
+  border-bottom:1px solid var(--brass);
 }
 .select-wrap::after{
-content:"";
-position:absolute;
-right:18px;
-top:50%;
-width:11px;
-height:11px;
-border-right:2px solid var(--accent);
-border-bottom:2px solid var(--accent);
-transform:translateY(-70%) rotate(45deg);
-pointer-events:none;
-transition:transform .3s ease, top .3s ease;
+  content:"";
+  position:absolute;
+  right:4px;top:50%;
+  width:8px;height:8px;
+  border-right:1.5px solid var(--brass);
+  border-bottom:1.5px solid var(--brass);
+  transform:translateY(-70%) rotate(45deg);
+  pointer-events:none;
+  transition:transform .3s ease;
 }
-.select-wrap:has(select:focus)::after{
-transform:translateY(-30%) rotate(-135deg);
-}
-.select-wrap select option{
-font-family:'Inter',sans-serif;
-padding:10px;
-}
+.select-wrap:has(select:focus)::after{transform:translateY(-30%) rotate(-135deg)}
+.select-wrap select option{font-family:'Inter',sans-serif}
 
-/* Journey container */
+/* Journey list with route rail */
 .journey-container{
-background:rgba(255,255,255,.5);
-border:1px solid rgba(184,146,88,.18);
-border-radius:28px;
-padding:36px;
-box-shadow:0 20px 60px rgba(184,146,88,.07);
+  position:relative;
+  padding-left:56px;
+}
+.journey-container::before{
+  content:"";
+  position:absolute;
+  left:9px;top:14px;bottom:14px;
+  width:1px;
+  background-image:repeating-linear-gradient(to bottom,var(--brass) 0,var(--brass) 4px,transparent 4px,transparent 10px);
+  opacity:.55;
 }
 
 .card{
-display:flex;align-items:center;gap:22px;
-background:rgba(255,255,255,.65);
-backdrop-filter:blur(10px);
-border:1px solid rgba(184,146,88,.15);
-border-radius:20px;
-padding:20px;
-margin-bottom:22px;
-transition:.3s;
+  --reveal:0;
+  display:flex;align-items:stretch;gap:0;
+  background:rgba(255,253,248,.6);
+  border:1px solid var(--line);
+  border-radius:2px;
+  margin-bottom:34px;
+  position:relative;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s ease, transform .7s ease, box-shadow .35s ease, border-color .35s ease;
 }
+.card.in-view{opacity:1;transform:translateY(0)}
 .card:last-child{margin-bottom:0}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.08)}
-.card img{width:310px;height:200px;object-fit:cover;border-radius:16px;transition:.4s}
-.card:hover img{transform:scale(1.03)}
-.info{flex:1}
-.info h2{font-family:'Playfair Display',serif;font-size:2rem}
-.country{color:var(--accent);margin:6px 0 16px}
-.info p{color:var(--text-muted);line-height:1.8}
-.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.tags span{padding:6px 12px;border-radius:999px;border:1px solid rgba(184,146,88,.35);font-size:.82rem}
-.price{text-align:right;width:180px}
-.price small{color:#888}
-.amount{font-family:'Playfair Display',serif;font-size:2rem;margin:10px 0 18px}
-.price a{text-decoration:none;color:var(--accent);font-weight:600}
-footer{border-top:1px solid rgba(0,0,0,.06);padding:20px;text-align:center;color:#9ca3af;font-size:.75rem}
+.card:hover{box-shadow:0 22px 50px rgba(21,26,23,.10);border-color:var(--brass)}
 
-@media(max-width:900px){
-.card{flex-direction:column;align-items:flex-start}
-.card img{width:100%;height:230px}
-.price{text-align:left;width:auto}
-.journey-container{padding:22px}
+.pin{
+  position:absolute;
+  left:-56px;
+  top:38px;
+  width:19px;height:19px;
+  border-radius:50%;
+  background:var(--paper);
+  border:1.5px solid var(--brass);
+  display:flex;align-items:center;justify-content:center;
+}
+.pin::after{
+  content:"";
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--brass);
+}
+
+.card .media{
+  width:300px;flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.card .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;filter:saturate(.92) contrast(1.03)}
+.card:hover .media img{transform:scale(1.05)}
+.coords{
+  position:absolute;
+  left:14px;bottom:14px;
+  font-family:'Space Mono',monospace;
+  font-size:.68rem;
+  letter-spacing:.05em;
+  color:#fff;
+  background:rgba(21,26,23,.55);
+  padding:4px 9px;
+  backdrop-filter:blur(3px);
+}
+
+.info{flex:1;padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
+.info .region{
+  font-family:'Space Mono',monospace;
+  font-size:.66rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--emerald);
+  margin-bottom:10px;
+}
+.info h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.65rem;letter-spacing:-.01em;margin-bottom:4px}
+.country{color:var(--brass);font-size:.85rem;margin-bottom:14px;font-style:italic;font-family:'Fraunces',serif}
+.info p{color:var(--text-muted);line-height:1.75;font-size:.94rem;max-width:44ch}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tags span{
+  padding:5px 12px;
+  border:1px solid var(--line);
+  color:var(--text-muted);
+  font-size:.72rem;
+  letter-spacing:.03em;
+}
+
+.price{
+  width:190px;flex-shrink:0;
+  padding:26px 26px 26px 22px;
+  border-left:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+}
+.price small{
+  font-family:'Space Mono',monospace;
+  font-size:.62rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.amount{font-family:'Fraunces',serif;font-weight:500;font-size:1.75rem;margin:8px 0 18px;color:var(--ink)}
+.price a{
+  text-decoration:none;
+  color:var(--emerald);
+  font-weight:500;
+  font-size:.82rem;
+  letter-spacing:.03em;
+  border-bottom:1px solid var(--emerald);
+  padding-bottom:2px;
+  transition:color .25s ease,border-color .25s ease;
+}
+.price a:hover{color:var(--clay);border-color:var(--clay)}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:26px;
+  text-align:center;
+  color:var(--text-muted);
+  font-size:.72rem;
+  letter-spacing:.05em;
+  font-family:'Space Mono',monospace;
+  position:relative;z-index:1;
+}
+
+@media(max-width:880px){
+  header{padding:0 5%}
+  .nav-left,.nav-right{gap:16px}
+  .journey-container{padding-left:34px}
+  .journey-container::before{left:5px}
+  .pin{left:-34px;width:15px;height:15px}
+  .card{flex-direction:column}
+  .card .media{width:100%;height:220px}
+  .price{border-left:none;border-top:1px solid var(--line);width:auto;flex-direction:row;justify-content:space-between;align-items:center}
+  .amount{margin:0}
+  .filters{flex-direction:column;max-width:100%}
+  .filter + .filter::before{display:none}
+  .filter + .filter{border-top:1px solid var(--line)}
 }
 </style>
 </head>
@@ -220,10 +367,25 @@ footer{border-top:1px solid rgba(0,0,0,.06);padding:20px;text-align:center;color
 </header>
 
 <section class="explore-section">
+<svg class="graticule" viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#b08a4e" stroke-width="0.6" fill="none">
+    <path d="M0,60 Q550,10 1100,60"/>
+    <path d="M0,150 Q550,110 1100,150"/>
+    <path d="M0,240 Q550,220 1100,240"/>
+    <path d="M0,330 Q550,360 1100,330"/>
+    <path d="M0,420 Q550,460 1100,420"/>
+    <path d="M120,0 Q160,250 120,500"/>
+    <path d="M340,0 Q380,250 340,500"/>
+    <path d="M560,0 Q600,250 560,500"/>
+    <path d="M780,0 Q820,250 780,500"/>
+    <path d="M1000,0 Q1040,250 1000,500"/>
+  </g>
+</svg>
 <div class="content">
-<h1 class="title">Explore</h1>
-<p class="description">Slow mornings or spirited nights — always exceptional.</p>
-<div class="divider"></div>
+  <span class="eyebrow">Bespoke Itineraries · Est. Since Discovery</span>
+  <h1 class="title">Journeys, <em>Charted</em></h1>
+  <div class="divider"></div>
+  <p class="description">Slow mornings or spirited nights — every route considered, every detail exceptional.</p>
 </div>
 </section>
 
@@ -233,7 +395,7 @@ footer{border-top:1px solid rgba(0,0,0,.06);padding:20px;text-align:center;color
 <label>Destination</label>
 <div class="select-wrap">
 <select id="dest">
-<option value="" selected>Destinations</option>
+<option value="" selected>All Regions</option>
 <option value="Africa">Africa</option>
 <option value="Asia">Asia</option>
 </select>
@@ -258,24 +420,22 @@ footer{border-top:1px solid rgba(0,0,0,.06);padding:20px;text-align:center;color
 </div>
 </div>
 
-<div class="journey-container">
-<div id="cards"></div>
-</div>
+<div class="journey-container" id="cards"></div>
 </section>
 
-<footer>© <span id="year"></span> MaidenWins. All rights reserved.</footer>
+<footer>© <span id="year"></span> MaidenWins — Charted with Care</footer>
 
 <script>
 /* Base prices are stored in INR; converted live based on selected currency */
 const data={
 Africa:[
-{t:"Safari Adventure",c:"Kenya",p:245000,i:"https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900",d:"Experience luxury safari camps, unforgettable wildlife encounters and breathtaking African sunsets.",tags:["7 Days","Luxury","Wildlife"]},
-{t:"Moroccan Escape",c:"Morocco",p:195000,i:"https://images.unsplash.com/photo-1548013146-72479768bada?w=900",d:"Discover ancient medinas, boutique riads and the Sahara in timeless elegance.",tags:["6 Days","Culture","Desert"]}
+  {t:"Safari Adventure",c:"Kenya",region:"East Africa",coords:"01°17'S 36°49'E",p:245000,i:"https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900",d:"Experience luxury safari camps, unforgettable wildlife encounters and breathtaking African sunsets.",tags:["7 Days","Luxury","Wildlife"]},
+  {t:"Moroccan Escape",c:"Morocco",region:"North Africa",coords:"31°38'N 07°59'W",p:195000,i:"https://images.unsplash.com/photo-1548013146-72479768bada?w=900",d:"Discover ancient medinas, boutique riads and the Sahara in timeless elegance.",tags:["6 Days","Culture","Desert"]}
 ],
 Asia:[
-{t:"Himalayan Trek",c:"Nepal",p:165000,i:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900",d:"Journey through dramatic mountain trails, remote monasteries and unmatched Himalayan vistas.",tags:["9 Days","Adventure","Mountains"]},
-{t:"Bali Retreat",c:"Indonesia",p:125000,i:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900",d:"Luxury villas, rice terraces and secluded beaches.",tags:["5 Days","Beach","Luxury"]},
-{t:"Japan Discovery",c:"Japan",p:210000,i:"https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=900",d:"Experience timeless traditions and modern elegance.",tags:["8 Days","Culture","Premium"]}
+  {t:"Himalayan Trek",c:"Nepal",region:"South Asia",coords:"27°43'N 85°19'E",p:165000,i:"https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900",d:"Journey through dramatic mountain trails, remote monasteries and unmatched Himalayan vistas.",tags:["9 Days","Adventure","Mountains"]},
+  {t:"Bali Retreat",c:"Indonesia",region:"Southeast Asia",coords:"08°20'S 115°05'E",p:125000,i:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900",d:"Luxury villas, rice terraces and secluded beaches.",tags:["5 Days","Beach","Luxury"]},
+  {t:"Japan Discovery",c:"Japan",region:"East Asia",coords:"35°00'N 135°46'E",p:210000,i:"https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=900",d:"Experience timeless traditions and modern elegance.",tags:["8 Days","Culture","Premium"]}
 ]};
 
 /* Approximate conversion rates from INR */
@@ -293,26 +453,49 @@ CNY:{rate:0.086,symbol:"¥"}
 };
 
 function formatPrice(inrAmount,curr){
-const info=rates[curr];
-const converted=inrAmount*info.rate;
-const decimals=(curr==="JPY")?0:0;
-const formatted=Math.round(converted).toLocaleString(curr==="INR"?"en-IN":"en-US");
-return `${info.symbol}${formatted}`;
+  const info=rates[curr];
+  const converted=inrAmount*info.rate;
+  const formatted=Math.round(converted).toLocaleString(curr==="INR"?"en-IN":"en-US");
+  return `${info.symbol}${formatted}`;
+}
+
+let observer;
+function initReveal(){
+  if(observer) observer.disconnect();
+  observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); });
+  },{threshold:.15});
+  document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 }
 
 function render(){
-const destVal=dest.value;
-const currVal=currency.value;
-const list = destVal ? data[destVal] : [...data.Africa, ...data.Asia];
-let h="";
-list.forEach(j=>{
-h+=`<div class="card">
-<img src="${j.i}" alt="${j.t}">
-<div class="info"><h2>${j.t}</h2><div class="country">${j.c}</div><p>${j.d}</p><div class="tags">${j.tags.map(x=>`<span>${x}</span>`).join("")}</div></div>
-<div class="price"><small>Starting From</small><div class="amount">${formatPrice(j.p,currVal)}</div><a href="#">View Journey →</a></div>
-</div>`;
-});
-cards.innerHTML=h;
+  const destVal=dest.value;
+  const currVal=currency.value;
+  const list = destVal ? data[destVal] : [...data.Africa, ...data.Asia];
+  let h="";
+  list.forEach(j=>{
+    h+=`<div class="card">
+      <div class="pin"></div>
+      <div class="media">
+        <img src="${j.i}" alt="${j.t}">
+        <div class="coords">${j.coords}</div>
+      </div>
+      <div class="info">
+        <div class="region">${j.region}</div>
+        <h2>${j.t}</h2>
+        <div class="country">${j.c}</div>
+        <p>${j.d}</p>
+        <div class="tags">${j.tags.map(x=>`<span>${x}</span>`).join("")}</div>
+      </div>
+      <div class="price">
+        <small>Starting From</small>
+        <div class="amount">${formatPrice(j.p,currVal)}</div>
+        <a href="#">View Journey →</a>
+      </div>
+    </div>`;
+  });
+  cards.innerHTML=h;
+  initReveal();
 }
 
 dest.onchange=render;
