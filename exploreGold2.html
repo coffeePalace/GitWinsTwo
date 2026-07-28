@@ -263,89 +263,11 @@ header::before {
 }
 
 .journey-highlights{
-    padding:120px 8%;
-    background:rgba(248,245,239,0.78);
-}
+    min-height: 450px;
 
-.highlight-row{
-    display:grid;
-    grid-template-columns:1.25fr 0.9fr;
-    gap:48px;
-    align-items:center;
-    margin-bottom:110px;
-}
+    background: rgba(248,245,239,0.78);
 
-.highlight-row:last-child{
-    margin-bottom:0;
-}
-
-.highlight-row.reverse{
-    grid-template-columns:0.9fr 1.25fr;
-}
-
-.highlight-row.reverse .highlight-image{
-    order:2;
-}
-
-.highlight-row.reverse .highlight-text{
-    order:1;
-}
-
-.highlight-image img{
-    width:100%;
-    display:block;
-    object-fit:cover;
-    aspect-ratio:16/10;
-}
-
-.highlight-label{
-    display:block;
-    margin-bottom:22px;
-
-    font-size:.78rem;
-    letter-spacing:.38em;
-    color:#5b6470;
-}
-
-.highlight-text h2{
-    font-family:'Inter',sans-serif;
-    font-size:clamp(2rem,3.3vw,3.4rem);
-    line-height:1.08;
-    font-weight:600;
-    color:#111827;
-
-    margin-bottom:28px;
-}
-
-.highlight-text p{
-    max-width:480px;
-
-    font-size:1.15rem;
-    line-height:1.8;
-    color:#4b5563;
-}
-
-@media (max-width:900px){
-
-    .highlight-row,
-    .highlight-row.reverse{
-        grid-template-columns:1fr;
-        gap:32px;
-        margin-bottom:70px;
-    }
-
-    .highlight-row.reverse .highlight-image,
-    .highlight-row.reverse .highlight-text{
-        order:initial;
-    }
-
-    .highlight-text h2{
-        font-size:2rem;
-    }
-
-    .highlight-text p{
-        max-width:100%;
-    }
+    padding: 200px 8%;
 }
 
 /* Mobile */
@@ -461,57 +383,9 @@ header::before {
 
   </section>
 
-<!-- JOURNEY HIGHLIGHTS -->
+  <!-- JOURNEY HIGHLIGHTS -->
 
 <section class="journey-highlights">
-
-  <article class="highlight-row">
-
-    <div class="highlight-image">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop" alt="Alpine lake">
-    </div>
-
-    <div class="highlight-text">
-      <span class="highlight-label">TRAVEL&nbsp;&nbsp;BEST OF THE WORLD</span>
-
-      <h2>
-        The best places in the world
-        <br>
-        to travel to in 2026
-      </h2>
-
-      <p>
-        Discover remarkable destinations where breathtaking landscapes,
-        authentic culture, and carefully curated luxury experiences come
-        together to create unforgettable journeys.
-      </p>
-    </div>
-
-  </article>
-
-
-  <article class="highlight-row reverse">
-
-    <div class="highlight-image">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop" alt="Forest retreat">
-    </div>
-
-    <div class="highlight-text">
-      <span class="highlight-label">TRAVEL&nbsp;&nbsp;BEST OF THE WORLD</span>
-
-      <h2>
-        Wellness retreats designed
-        <br>
-        for complete rejuvenation
-      </h2>
-
-      <p>
-        Escape into peaceful surroundings, indulgent wellness experiences,
-        and meaningful moments that restore body, mind, and spirit.
-      </p>
-    </div>
-
-  </article>
 
 </section>
 
