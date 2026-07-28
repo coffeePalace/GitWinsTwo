@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>MaidenWins</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -286,9 +287,17 @@ header::before {
     margin-bottom:18px;
 }
 
+.story-feature svg{
+    width:46px;
+    height:46px;
+    stroke:#111827;
+    stroke-width:1.5;
+    margin-bottom:18px;
+}
+
 .story-feature h4{
     font-family:'Playfair Display',serif;
-    font-size:1.1rem;
+    font-size:1.05rem;
     font-weight:600;
     margin-bottom:10px;
     color:#111827;
@@ -509,37 +518,39 @@ header::before {
 
       <p>
         Every detail taken care of, so you're free to unwind and return renewed.
-        <div class="story-features">
+       <div class="story-features">
 
-  <div class="story-feature">
-    <div class="feature-icon">🛎️</div>
-    <h4>Concierge Planning</h4>
-    <span>Every journey tailored from start to finish.</span>
-  </div>
+    <div class="story-feature">
+        <i data-lucide="briefcase-business"></i>
+        <h4>Concierge Planning</h4>
+        <span>Every journey thoughtfully planned from start to finish.</span>
+    </div>
 
-  <div class="story-feature">
-    <div class="feature-icon">👥</div>
-    <h4>Small Groups</h4>
-    <span>Travel with fewer guests for a more personal experience.</span>
-  </div>
+    <div class="story-feature">
+        <i data-lucide="users"></i>
+        <h4>Small Groups</h4>
+        <span>Travel with fewer guests for a more personal experience.</span>
+    </div>
 
-  <div class="story-feature">
-    <div class="feature-icon">✨</div>
-    <h4>Curated Experiences</h4>
-    <span>Authentic moments selected beyond the typical itinerary.</span>
-  </div>
+    <div class="story-feature">
+        <i data-lucide="gem"></i>
+        <h4>Curated Experiences</h4>
+        <span>Authentic moments beyond the ordinary itinerary.</span>
+    </div>
 
-  <div class="story-feature">
-    <div class="feature-icon">🚘</div>
-    <h4>Luxury Transfers</h4>
-    <span>Private transportation for seamless travel.</span>
-  </div>
+    <div class="story-feature">
+        <i data-lucide="car-front"></i>
+        <h4>Luxury Transfers</h4>
+        <span>Private transportation for effortless travel.</span>
+    </div>
 
-  <div class="story-feature">
-    <div class="feature-icon">🌍</div>
-    <h4>Local Experts</h4>
-    <span>Knowledgeable guides who reveal every destination's hidden gems.</span>
-  </div>
+    <div class="story-feature">
+        <i data-lucide="compass"></i>
+        <h4>Local Experts</h4>
+        <span>Knowledgeable guides who bring every destination to life.</span>
+    </div>
+
+</div>
 
 </div>
       </p>
@@ -624,6 +635,10 @@ header::before {
       heroBg.style.backgroundPosition = `center calc(60% + ${window.scrollY * 0.50}px)`;
     });
   }
+</script>
+
+<script>
+    lucide.createIcons();
 </script>
 
 </body>
