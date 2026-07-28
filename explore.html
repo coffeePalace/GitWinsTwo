@@ -405,9 +405,11 @@ header::before {
 <script>
   const heroBg = document.querySelector(".hero");
 
-  window.addEventListener("scroll", () => {
-      heroBg.style.backgroundPositionY = `${window.scrollY * 0.2}px`;
-  });
+  if (heroBg) {
+    window.addEventListener("scroll", () => {
+      heroBg.style.backgroundPosition = `center calc(50% + ${window.scrollY * 0.2}px)`;
+    });
+  }
 </script>
 
 </body>
