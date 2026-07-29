@@ -173,22 +173,12 @@ header::before {
   padding: 100px 24px;
   position: relative;
   overflow: hidden;
-}
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: inherit;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  transform: scale(1);
-  animation: kenburns 20s ease-in-out infinite alternate;
-
-  z-index: -2;
+  animation: kenburns 25s ease-in-out forwards;
 }
 
     /* Soft luxury glow */
@@ -321,19 +311,17 @@ header::before {
     color:#6b7280;
 }
 
-@keyframes kenburns {
+@keyframes kenburns{
 
-  0%{
-      transform: scale(1) translate(0,0);
-  }
+0%{
+    background-size:100%;
+    background-position:center;
+}
 
-  50%{
-      transform: scale(1.08) translate(-2%,-1%);
-  }
-
-  100%{
-      transform: scale(1.15) translate(2%,2%);
-  }
+100%{
+    background-size:112%;
+    background-position:center 45%;
+}
 
 }
 
@@ -694,12 +682,11 @@ const heroImages = [
 
 ];
 
-const minuteDigit = new Date().getMinutes() % 10;
+const imageIndex = new Date().getMinutes() % heroImages.length;
 
 const hero = document.querySelector(".hero");
 
-hero.style.backgroundImage =
-`url("${heroImages[imageIndex]}")`;
+hero.style.backgroundImage = `url("${heroImages[imageIndex]}")`;
 </script>
 
 </body>
