@@ -311,16 +311,47 @@ header::before {
 }
 
 .journey-highlights{
-    padding:120px 8%;
+    padding:120px 0;
     background:rgba(248,245,239,0.78);
 }
 
 .highlight-row{
     display:grid;
-    grid-template-columns:1.25fr 0.9fr;
-    gap:48px;
+
+    grid-template-columns:
+        minmax(8px,3vw)
+        minmax(420px,42vw)
+        minmax(70px,6vw)
+        minmax(450px,650px)
+        minmax(8px,3vw);
+
     align-items:center;
-    margin-bottom:110px;
+    margin-bottom:120px;
+}
+
+.highlight-image{
+    grid-column:2;
+}
+
+.highlight-text{
+    grid-column:4;
+}
+
+.highlight-row.reverse{
+    grid-template-columns:
+        minmax(8px,3vw)
+        minmax(450px,650px)
+        minmax(70px,6vw)
+        minmax(420px,42vw)
+        minmax(8px,3vw);
+}
+
+.highlight-row.reverse .highlight-text{
+    grid-column:2;
+}
+
+.highlight-row.reverse .highlight-image{
+    grid-column:4;
 }
 
 .highlight-row:last-child{
@@ -339,11 +370,15 @@ header::before {
     order:1;
 }
 
+.highlight-image{
+    width:100%;
+}
+
 .highlight-image img{
     width:100%;
     display:block;
+    aspect-ratio:4/3;
     object-fit:cover;
-    aspect-ratio:16/10;
 }
 
 .highlight-label{
@@ -498,7 +533,7 @@ header::before {
 
       <p>
     Every detail taken care of, so you're free to unwind and return renewed.
-  </p>
+  
        <div class="story-features">
 
     <div class="story-feature">
