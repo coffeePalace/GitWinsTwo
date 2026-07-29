@@ -169,11 +169,10 @@ header::before {
   align-items: center;
   justify-content: center;
   text-align: center;
-    min-height: 80vh;
-    padding: 100px 24px;
+  min-height: 80vh;
+  padding: 100px 24px;
   position: relative;
 
-  background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&auto=format&fit=crop");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -221,15 +220,6 @@ header::before {
   );
   margin: 0 auto 32px;
 }
-
-    .subtitle {
-      max-width: 680px;
-      margin: auto;
-      font-size: 1.15rem;
-      line-height: 1.9;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
 
     /* ======================
    STORY SECTION
@@ -280,11 +270,6 @@ header::before {
     display:flex;
     flex-direction:column;
     align-items:center;
-}
-
-.feature-icon{
-    font-size:2.4rem;
-    margin-bottom:18px;
 }
 
 .story-feature svg{
@@ -467,11 +452,6 @@ header::before {
         font-size: 3rem;
       }
 
-      .subtitle {
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-
       .hero {
         padding: 70px 24px;
       }
@@ -517,7 +497,8 @@ header::before {
     <div class="story-content">
 
       <p>
-        Every detail taken care of, so you're free to unwind and return renewed.
+    Every detail taken care of, so you're free to unwind and return renewed.
+  </p>
        <div class="story-features">
 
     <div class="story-feature">
@@ -627,18 +608,41 @@ header::before {
     new Date().getFullYear();
 </script>
 
-<script>
-  const heroBg = document.querySelector(".hero");
-
-  if (heroBg) {
-    window.addEventListener("scroll", () => {
-      heroBg.style.backgroundPosition = `center calc(60% + ${window.scrollY * 0.50}px)`;
-    });
-  }
-</script>
 
 <script>
     lucide.createIcons();
+</script>
+
+<script>
+const heroImages = [
+
+"https://images.unsplash.com/photo-1624554305378-0f440dd3a8c1?q=80&w=2925&auto=format&fit=crop", // Kerala boating sunset
+
+"https://plus.unsplash.com/premium_photo-1697730430306-7c8d36cb3722?q=80&w=2070&auto=format&fit=crop", // Kerala tea plantations
+
+"https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=2232&auto=format&fit=crop", // Kerala boating canal
+
+"https://images.unsplash.com/photo-1641666017842-f94246ef2961?q=80&w=2070&auto=format&fit=crop", // Elephants
+
+"https://images.unsplash.com/photo-1593872356907-d67e8587d0f9?q=80&w=1048&auto=format&fit=crop", // Kerala dance
+
+"https://images.unsplash.com/photo-1610817201767-793a9130ce07?q=80&w=3016&auto=format&fit=crop", // Varkala beach
+
+"https://images.unsplash.com/photo-1575305327780-a887f284432f?q=80&w=3131&auto=format&fit=crop", // Waterfall
+
+"https://images.unsplash.com/photo-1546778316-dfda79f1c84e?q=80&w=2940&auto=format&fit=crop", // Theyyam
+
+"https://images.unsplash.com/photo-1659410553816-fa68a5d1bd94?q=80&w=2944&auto=format&fit=crop",  // Vagamon
+
+"https://images.unsplash.com/photo-1711192702535-eac61a78ecb0?q=80&w=2906&auto=format&fit=crop"  // Munnar
+
+];
+
+const imageIndex = new Date().getMinutes() % heroImages.length;
+
+document.querySelector(".hero").style.backgroundImage =
+`url("${heroImages[imageIndex]}")`;
+
 </script>
 
 </body>
