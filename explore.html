@@ -341,33 +341,14 @@ header::before {
     grid-column:4;
 }
 
-.highlight-row.reverse .highlight-image{
-    grid-column:4;
-}
-
 .highlight-row.reverse .highlight-text{
     grid-column:2;
-}
-
-.highlight-row.reverse{
-    display:grid;
-
-    grid-template-columns:
-        12px
-        minmax(520px,760px)
-        33px
-        minmax(520px,48vw)
-        12px;
-
-    align-items:center;
-}
-
-.highlight-row.reverse .highlight-text{
-    grid-column:2;
+    align-self:center;
 }
 
 .highlight-row.reverse .highlight-image{
     grid-column:4;
+    align-self:center;
 }
 
 .highlight-row:last-child{
@@ -421,9 +402,16 @@ header::before {
         margin-bottom:70px;
     }
 
+    .highlight-row + .highlight-row{
+        padding-top:0;
+    }
+
+    .highlight-image,
+    .highlight-text,
     .highlight-row.reverse .highlight-image,
     .highlight-row.reverse .highlight-text{
-        order:initial;
+        grid-column:1;
+        align-self:auto;
     }
 
     .highlight-text h2{
@@ -433,21 +421,6 @@ header::before {
     .highlight-text p{
         max-width:100%;
     }
-}
-
-/* Mobile */
-
-@media (max-width:768px){
-
-  .story{
-    padding: 70px 24px;
-  }
-
-  .story p{
-    font-size: 1.55rem;
-    line-height: 1.45;
-  }
-
 }
 
     /* ======================
@@ -537,7 +510,7 @@ header::before {
 
       <p>
     Every detail taken care of, so you're free to unwind and return renewed.
-  
+    </p>
        <div class="story-features">
 
     <div class="story-feature">
