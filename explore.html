@@ -172,10 +172,23 @@ header::before {
   min-height: 80vh;
   padding: 100px 24px;
   position: relative;
+  overflow: hidden;
+}
 
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: inherit;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  transform: scale(1);
+  animation: kenburns 20s ease-in-out infinite alternate;
+
+  z-index: -2;
 }
 
     /* Soft luxury glow */
@@ -190,7 +203,7 @@ header::before {
       rgba(15,20,30,0.55)
     );
 
-  z-index: 0;
+  z-index: -1;
 }
 
     .hero-content {
@@ -306,6 +319,22 @@ header::before {
     font-size:.92rem;
     line-height:1.7;
     color:#6b7280;
+}
+
+@keyframes kenburns {
+
+  0%{
+      transform: scale(1) translate(0,0);
+  }
+
+  50%{
+      transform: scale(1.08) translate(-2%,-1%);
+  }
+
+  100%{
+      transform: scale(1.15) translate(2%,2%);
+  }
+
 }
 
 @media(max-width:900px){
@@ -667,8 +696,10 @@ const heroImages = [
 
 const minuteDigit = new Date().getMinutes() % 10;
 
-document.querySelector(".hero").style.backgroundImage =
-`url("${heroImages[minuteDigit]}")`;
+const hero = document.querySelector(".hero");
+
+hero.style.backgroundImage =
+`url("${heroImages[imageIndex]}")`;
 </script>
 
 </body>
