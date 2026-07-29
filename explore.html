@@ -337,12 +337,16 @@ header::before {
 }
 
 .highlight-row.reverse{
+    display:grid;
+
     grid-template-columns:
-        minmax(8px,3vw)
-        minmax(450px,650px)
-        minmax(70px,6vw)
-        minmax(420px,42vw)
-        minmax(8px,3vw);
+        12px
+        minmax(520px,760px)
+        33px
+        minmax(520px,48vw)
+        12px;
+
+    align-items:center;
 }
 
 .highlight-row.reverse .highlight-text{
