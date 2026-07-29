@@ -221,15 +221,6 @@ header::before {
   margin: 0 auto 32px;
 }
 
-    .subtitle {
-      max-width: 680px;
-      margin: auto;
-      font-size: 1.15rem;
-      line-height: 1.9;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
-
     /* ======================
    STORY SECTION
 ====================== */
@@ -281,11 +272,6 @@ header::before {
     align-items:center;
 }
 
-.feature-icon{
-    font-size:2.4rem;
-    margin-bottom:18px;
-}
-
 .story-feature svg{
     width:46px;
     height:46px;
@@ -306,20 +292,6 @@ header::before {
     font-size:.92rem;
     line-height:1.7;
     color:#6b7280;
-}
-
-@keyframes kenburns{
-
-0%{
-    background-size:100%;
-    background-position:center;
-}
-
-100%{
-    background-size:112%;
-    background-position:center 45%;
-}
-
 }
 
 @media(max-width:900px){
@@ -480,11 +452,6 @@ header::before {
         font-size: 3rem;
       }
 
-      .subtitle {
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-
       .hero {
         padding: 70px 24px;
       }
@@ -530,7 +497,8 @@ header::before {
     <div class="story-content">
 
       <p>
-        Every detail taken care of, so you're free to unwind and return renewed.
+    Every detail taken care of, so you're free to unwind and return renewed.
+  </p>
        <div class="story-features">
 
     <div class="story-feature">
@@ -670,10 +638,11 @@ const heroImages = [
 
 ];
 
-const minuteDigit = new Date().getMinutes() % 10;
+const imageIndex = new Date().getMinutes() % heroImages.length;
 
 document.querySelector(".hero").style.backgroundImage =
-`url("${heroImages[minuteDigit]}")`;
+`url("${heroImages[imageIndex]}")`;
+
 </script>
 
 </body>
