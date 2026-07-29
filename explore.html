@@ -172,13 +172,10 @@ header::before {
   min-height: 80vh;
   padding: 100px 24px;
   position: relative;
-  overflow: hidden;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  animation: kenburns 25s ease-in-out forwards;
 }
 
     /* Soft luxury glow */
@@ -193,7 +190,7 @@ header::before {
       rgba(15,20,30,0.55)
     );
 
-  z-index: -1;
+  z-index: 0;
 }
 
     .hero-content {
@@ -673,11 +670,10 @@ const heroImages = [
 
 ];
 
-const imageIndex = new Date().getMinutes() % heroImages.length;
+const minuteDigit = new Date().getMinutes() % 10;
 
-const hero = document.querySelector(".hero");
-
-hero.style.backgroundImage = `url("${heroImages[imageIndex]}")`;
+document.querySelector(".hero").style.backgroundImage =
+`url("${heroImages[minuteDigit]}")`;
 </script>
 
 </body>
