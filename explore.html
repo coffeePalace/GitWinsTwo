@@ -643,15 +643,6 @@ header::before {
     new Date().getFullYear();
 </script>
 
-<script>
-  const heroBg = document.querySelector(".hero");
-
-  if (heroBg) {
-    window.addEventListener("scroll", () => {
-      heroBg.style.backgroundPosition = `center calc(60% + ${window.scrollY * 0.50}px)`;
-    });
-  }
-</script>
 
 <script>
     lucide.createIcons();
