@@ -409,11 +409,14 @@ header::before {
 .hindi-title {
   font-family: 'Yatra One', sans-serif;
   font-size: 4rem;
-  color: #3a2d1f;
-  text-shadow: 
-    0 1px 0 #6b5a3f,
-    0 2px 3px rgba(0,0,0,0.4);
-  opacity: 0.85;
+  color: #d8c9a3; /* aged parchment tone */
+  background-image: url('map-texture.jpg'); /* your background texture */
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+  letter-spacing: 1px;
 }
 
 @media (max-width:900px){
