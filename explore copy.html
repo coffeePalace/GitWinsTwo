@@ -9,8 +9,7 @@
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f8f5ef;
@@ -299,6 +298,9 @@ header::before {
 .story-features{
     grid-template-columns:repeat(2,1fr);
 }
+.highlight-image img{
+    height:420px;
+}
 
 }
 
@@ -311,39 +313,61 @@ header::before {
 }
 
 .journey-highlights{
-    padding:120px 8%;
+    padding:120px 0;
     background:rgba(248,245,239,0.78);
 }
 
 .highlight-row{
     display:grid;
-    grid-template-columns:1.25fr 0.9fr;
-    gap:48px;
-    align-items:center;
-    margin-bottom:110px;
+
+    grid-template-columns:
+        12px
+        minmax(520px,48vw)
+        33px
+        minmax(520px,760px)
+        12px;
+
+    align-items:start;
+    margin-bottom:140px;
+}
+
+.highlight-row + .highlight-row{
+    padding-top:40px;
+}
+
+.highlight-image{
+    grid-column:2;
+}
+
+.highlight-text{
+    grid-column:4;
+}
+
+.highlight-row.reverse .highlight-text{
+    grid-column:2;
+    grid-row:1;
+    align-self:center;
+}
+
+.highlight-row.reverse .highlight-image{
+    grid-column:4;
+    grid-row:1;
+    align-self:center;
 }
 
 .highlight-row:last-child{
     margin-bottom:0;
 }
 
-.highlight-row.reverse{
-    grid-template-columns:0.9fr 1.25fr;
-}
-
-.highlight-row.reverse .highlight-image{
-    order:2;
-}
-
-.highlight-row.reverse .highlight-text{
-    order:1;
+.highlight-image{
+    width:100%;
+    margin:0;
 }
 
 .highlight-image img{
     width:100%;
-    display:block;
+    height:620px;
     object-fit:cover;
-    aspect-ratio:16/10;
 }
 
 .highlight-label{
@@ -366,11 +390,18 @@ header::before {
 }
 
 .highlight-text p{
-    max-width:480px;
+    width:100%;
 
     font-size:1.15rem;
     line-height:1.8;
     color:#4b5563;
+}
+
+.yatra-title{
+    font-family: 'Yatra One', serif;
+    font-weight:400;
+    line-height:1.15;
+    letter-spacing:0.01em;
 }
 
 @media (max-width:900px){
@@ -382,9 +413,16 @@ header::before {
         margin-bottom:70px;
     }
 
+    .highlight-row + .highlight-row{
+        padding-top:0;
+    }
+
+    .highlight-image,
+    .highlight-text,
     .highlight-row.reverse .highlight-image,
     .highlight-row.reverse .highlight-text{
-        order:initial;
+        grid-column:1;
+        align-self:auto;
     }
 
     .highlight-text h2{
@@ -394,21 +432,6 @@ header::before {
     .highlight-text p{
         max-width:100%;
     }
-}
-
-/* Mobile */
-
-@media (max-width:768px){
-
-  .story{
-    padding: 70px 24px;
-  }
-
-  .story p{
-    font-size: 1.55rem;
-    line-height: 1.45;
-  }
-
 }
 
     /* ======================
@@ -498,7 +521,7 @@ header::before {
 
       <p>
     Every detail taken care of, so you're free to unwind and return renewed.
-  </p>
+    </p>
        <div class="story-features">
 
     <div class="story-feature">
@@ -553,16 +576,13 @@ header::before {
     <div class="highlight-text">
       <span class="highlight-label">TRAVEL&nbsp;&nbsp;BEST OF THE WORLD</span>
 
-      <h2>
-        The best places in the world
-        <br>
-        to travel to in 2026
-      </h2>
+    <h2 class="yatra-title">
+        Southern India: Backwaters, Boulders and Ancient Rhythms
+    </h2>
 
       <p>
-        Discover remarkable destinations where breathtaking landscapes,
-        authentic culture, and carefully curated luxury experiences come
-        together to create unforgettable journeys.
+        Wander a stretch of India where geography itself seems to tell stories — houseboats gliding through the still green channels of Alleppey, red cliffs dropping into the Arabian Sea at Varkala, and the surreal boulder-strewn ruins of Hampi scattered like the remains of a forgotten giant's game. Climb into the cool tea-covered hills of Ooty, where colonial-era trains still wind through the Nilgiris, and pause at sanctuaries where elephants move unhurried through the trees. Feel the floor shake with the stamping footwork of Kalaripayattu, one of the world's oldest martial arts, then sit spellbound as Kathakali performers transform into gods and demons through paint, expression and gesture alone. Explore the palace grandeur of Mysuru, still lit like a jewel after dark, before trading temple bells for French-shuttered streets and seaside promenades in Puducherry — a coastal town where two cultures have long shared the same sunset.
+        
       </p>
     </div>
 
@@ -579,14 +599,11 @@ header::before {
       <span class="highlight-label">TRAVEL&nbsp;&nbsp;BEST OF THE WORLD</span>
 
       <h2>
-        Wellness retreats designed
-        <br>
-        for complete rejuvenation
+        Wellness retreats designed for complete rejuvenation
       </h2>
 
       <p>
-        Escape into peaceful surroundings, indulgent wellness experiences,
-        and meaningful moments that restore body, mind, and spirit.
+        Wander a stretch of India where geography itself seems to tell stories — houseboats gliding through the still green channels of Alleppey, red cliffs dropping into the Arabian Sea at Varkala, and the surreal boulder-strewn ruins of Hampi scattered like the remains of a forgotten giant's game. Climb into the cool tea-covered hills of Ooty, where colonial-era trains still wind through the Nilgiris, and pause at sanctuaries where elephants move unhurried through the trees. Feel the floor shake with the stamping footwork of Kalaripayattu, one of the world's oldest martial arts, then sit spellbound as Kathakali performers transform into gods and demons through paint, expression and gesture alone. Explore the palace grandeur of Mysuru, still lit like a jewel after dark, before trading temple bells for French-shuttered streets and seaside promenades in Puducherry — a coastal town where two cultures have long shared the same sunset.
       </p>
     </div>
 
