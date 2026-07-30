@@ -236,15 +236,6 @@ header::before {
       margin-bottom: 40px;
     }
 
-    .location {
-      display: inline-block;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
     /* ======================
        FOOTER
     ====================== */
@@ -262,6 +253,131 @@ header::before {
       color: #9ca3af;
       font-size: 0.75rem;
     }
+
+    /* ======================
+   STORY SECTION
+====================== */
+
+.story{
+    padding:90px 8%;
+    background:rgba(255,255,255,.68);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.story-content{
+    max-width:1000px;
+    text-align:center;
+}
+
+.story-heading{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.4rem,4vw,3.6rem);
+    font-weight:600;
+    color:#111827;
+    margin-bottom:22px;
+}
+
+.story-divider{
+    width:90px;
+    height:2px;
+    margin:0 auto 36px;
+    background:linear-gradient(to right,
+        transparent,
+        var(--accent),
+        transparent);
+}
+
+.story p{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.4rem,2.2vw,2.15rem);
+    line-height:1.55;
+    font-weight:500;
+    color:#111827;
+    letter-spacing:-0.01em;
+}
+
+.story em{
+    font-style:italic;
+    color:var(--accent);
+}
+
+.story-features{
+
+    margin-top:60px;
+    padding-top:45px;
+
+    border-top:1px solid rgba(184,146,88,.18);
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:30px;
+
+    text-align:center;
+}
+
+.story-feature{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.story-feature svg{
+
+    width:46px;
+    height:46px;
+
+    stroke:#111827;
+    stroke-width:1.5;
+
+    margin-bottom:18px;
+}
+
+.story-feature h4{
+
+    font-family:'Playfair Display',serif;
+    font-size:1.08rem;
+    font-weight:600;
+
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.story-feature span{
+
+    font-size:.92rem;
+    line-height:1.7;
+    color:#6b7280;
+}
+
+@media(max-width:900px){
+
+.story-features{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.story{
+    padding:70px 8%;
+}
+
+.story-features{
+    grid-template-columns:1fr;
+}
+
+.story p{
+    font-size:1.3rem;
+}
+
+}
 
     /* ======================
        MOBILE
@@ -322,21 +438,92 @@ header::before {
 
     <div class="hero-content">
 
-      <h1 class="brand">MaidenWins</h1>
+      <h1 class="brand">South India</h1>
 
       <div class="divider"></div>
 
       <p class="subtitle">
-        Elevated travel, thoughtfully planned.
+        Backwaters, boulders, ancient temples and timeless luxury.
       </p>
-
-      <div class="location">
-        Based in India
-      </div>
 
     </div>
 
   </section>
+
+  <!-- ======================
+     STORY
+====================== -->
+
+<section class="story">
+
+    <div class="story-content">
+
+        <h2 class="story-heading">Southern India</h2>
+
+        <div class="story-divider"></div>
+
+        <p>
+            From the tranquil backwaters of Kerala and the timeless temples of Tamil Nadu to
+            the mist-covered hills of Karnataka and the vibrant coastline of Goa,
+            <em>Southern India is a journey through elegance, culture and nature.</em>
+            Every itinerary has been thoughtfully curated to balance iconic landmarks with
+            hidden experiences, exceptional stays and unhurried moments that transform a
+            holiday into a collection of lifelong memories.
+        </p>
+
+        <div class="story-features">
+
+            <div class="story-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path d="M12 2L4 7v10l8 5 8-5V7l-8-5Z"/>
+                    <path d="M8 11l2.5 2.5L16 8"/>
+                </svg>
+                <h4>Curated Itineraries</h4>
+                <span>Expertly designed journeys that blend iconic destinations with hidden gems.</span>
+            </div>
+
+            <div class="story-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path d="M3 20h18"/>
+                    <path d="M6 20V9l6-5 6 5v11"/>
+                </svg>
+                <h4>Luxury Stays</h4>
+                <span>Handpicked heritage palaces, boutique retreats and premium resorts.</span>
+            </div>
+
+            <div class="story-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path d="M4 19c5-4 11-4 16 0"/>
+                    <path d="M12 5c2.5 2.5 4 5.5 4 9"/>
+                    <path d="M12 5c-2.5 2.5-4 5.5-4 9"/>
+                </svg>
+                <h4>Authentic Experiences</h4>
+                <span>Houseboats, spice plantations, temple rituals and local culinary discoveries.</span>
+            </div>
+
+            <div class="story-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4Z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <h4>Travel With Confidence</h4>
+                <span>Reliable planning, seamless logistics and carefully selected partners.</span>
+            </div>
+
+            <div class="story-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path d="M12 6v6l4 2"/>
+                    <circle cx="12" cy="12" r="9"/>
+                </svg>
+                <h4>Thoughtfully Paced</h4>
+                <span>Designed with time to explore, relax and truly experience each destination.</span>
+            </div>l
+
+        </div>
+
+    </div>
+
+</section>
 
   <!-- FOOTER -->
   <footer>
