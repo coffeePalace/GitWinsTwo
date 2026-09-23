@@ -1,3 +1,31 @@
 {
-  "version": 2
+  "version": 2,
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/explore",
+      "destination": "/journeys-made-for-unwinding",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/in-your-service",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/journeys-made-for-unwinding",
+      "destination": "/explore.html"
+    },
+    {
+      "source": "/in-your-service",
+      "destination": "/contact.html"
+    }
+  ]
 }
