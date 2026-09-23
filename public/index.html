@@ -37,23 +37,15 @@
       background:
         radial-gradient(circle at top left, rgba(184,146,88,0.08), transparent 35%),
         radial-gradient(circle at bottom right, rgba(184,146,88,0.06), transparent 30%),
-        var(--bg);
+        linear-gradient(rgba(248,245,239,0.88), rgba(248,245,239,0.88)),
+        url("/images/hero-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: var(--text-primary);
       display: flex;
       flex-direction: column;
-    }
-
-    /* Parallax background */
-    .parallax-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 120%;
-      background: url("/images/hero-bg.jpg") center / cover no-repeat;
-      z-index: -1;
-      will-change: transform;
-      transform: translateY(0);
     }
 
     /* ======================
@@ -210,7 +202,7 @@
     }
 
     /* ======================
-       STORY SECTION
+       STORY SECTION (from explore)
     ====================== */
     .story {
       padding: 53px 8%;
@@ -341,9 +333,6 @@
 
 <body>
 
-  <!-- Parallax background -->
-  <div class="parallax-bg"></div>
-
   <!-- HEADER -->
   <header>
     <div class="nav-left">
@@ -422,13 +411,6 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     lucide.createIcons();
-
-    // Parallax effect (slower than scroll)
-    const bg = document.querySelector('.parallax-bg');
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      bg.style.transform = `translateY(${scrolled * 0.35}px)`;
-    });
   </script>
 
 </body>
