@@ -8,12 +8,12 @@
       "permanent": true
     },
     {
-      "source": "/explore.html",
+      "source": "/explore",
       "destination": "/journeys-made-for-unwinding",
       "permanent": true
     },
     {
-      "source": "/contact.html",
+      "source": "/contact",
       "destination": "/in-your-service",
       "permanent": true
     }
