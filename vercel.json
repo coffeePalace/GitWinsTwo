@@ -21,11 +21,11 @@
   "rewrites": [
     {
       "source": "/journeys-made-for-unwinding",
-      "destination": "/explore.html"
+      "destination": "/explore"
     },
     {
       "source": "/in-your-service",
-      "destination": "/contact.html"
+      "destination": "/contact"
     }
   ]
 }
