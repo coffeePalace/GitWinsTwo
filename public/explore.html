@@ -5,14 +5,13 @@
   <title>MW | Luxury Travel Experiences</title>
   <meta name="description" content="MaidenWins creates bespoke luxury travel experiences, curated holidays, private tours, and unforgettable journeys around the world." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="icon" type="image/png" href="/Favicon.png" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #f8f5ef;
@@ -227,93 +226,6 @@ header::before {
    STORY SECTION
 ====================== */
 
-.story{
-    padding: 53px 8%;
-    background: rgba(255,255,255,0.65);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.story-content{
-    max-width: 900px;
-    text-align: center;
-}
-
-.story p{
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.7rem, 2.5vw, 2.8rem);
-  line-height: 1.35;
-  font-weight: 500;
-  color: #111827;
-  letter-spacing: -0.01em;
-}
-
-.story em{
-  font-style: italic;
-  font-weight: 500;
-}
-
-.story-features{
-    margin-top:60px;
-    padding-top:45px;
-
-    border-top:1px solid rgba(184,146,88,.18);
-
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:30px;
-
-    text-align:center;
-}
-
-.story-feature{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.story-feature svg{
-    width:46px;
-    height:46px;
-    stroke:#111827;
-    stroke-width:1.5;
-    margin-bottom:18px;
-}
-
-.story-feature h4{
-    font-family:'Playfair Display',serif;
-    font-size:1.05rem;
-    font-weight:600;
-    margin-bottom:10px;
-    color:#111827;
-}
-
-.story-feature span{
-    font-size:.92rem;
-    line-height:1.7;
-    color:#6b7280;
-}
-
-@media(max-width:900px){
-
-.story-features{
-    grid-template-columns:repeat(2,1fr);
-}
-.highlight-image img{
-    height:420px;
-}
-
-}
-
-@media(max-width:600px){
-
-.story-features{
-    grid-template-columns:1fr;
-}
-
-}
 
 .journey-highlights{
     padding:120px 0;
@@ -406,17 +318,6 @@ header::before {
     line-height:1.15;
     letter-spacing:0.01em;
 }
-.yatra-title a {
-    color: inherit;          /* Uses the same color as the h2 */
-    text-decoration: none;   /* Removes the underline */
-}
-.yatra-title a:hover {
-    color: inherit;          /* Prevents color change on hover */
-    text-decoration: none;   /* Or add underline if you prefer */
-}
-.yatra-title a:visited {
-    color: inherit;
-}
 
 @media (max-width:900px){
 
@@ -502,15 +403,15 @@ header::before {
   <header>
 
     <div class="nav-left">
-      <a href="explore.html">Explore</a>
+      <a href="/journeys-made-for-unwinding">Explore</a>
     </div>
 
     <div class="logo">
-      <a href="index.html">MaidenWins</a>
+      <a href="/">MaidenWins</a>
     </div>
 
     <div class="nav-right">
-      <a href="contact.html">Contact</a>
+      <a href="/in-your-service">Contact</a>
     </div>
 
   </header>
@@ -528,102 +429,272 @@ header::before {
 
   </section>
 
-    <!-- STORY -->
-  <section class="story">
+  <!-- JOURNEY FINDER -->
+  <section class="journey-finder" id="journey-finder">
 
-    <div class="story-content">
-
-      <p>
-    Every detail taken care of, so you're free to unwind and return renewed.
-    </p>
-       <div class="story-features">
-
-    <div class="story-feature">
-        <i data-lucide="briefcase-business"></i>
-        <h4>Concierge Planning</h4>
-        <span>Every journey thoughtfully planned from start to finish.</span>
-    </div>
-
-    <div class="story-feature">
-        <i data-lucide="users"></i>
-        <h4>Small Groups</h4>
-        <span>Travel with fewer guests for a more personal experience.</span>
-    </div>
-
-    <div class="story-feature">
-        <i data-lucide="gem"></i>
-        <h4>Curated Experiences</h4>
-        <span>Authentic moments beyond the ordinary itinerary.</span>
-    </div>
-
-    <div class="story-feature">
-        <i data-lucide="car-front"></i>
-        <h4>Luxury Transfers</h4>
-        <span>Private transportation for effortless travel.</span>
-    </div>
-
-    <div class="story-feature">
-        <i data-lucide="compass"></i>
-        <h4>Local Experts</h4>
-        <span>Knowledgeable guides who bring every destination to life.</span>
-    </div>
-
-</div>
-
-</div>
+    <div class="finder-intro">
+      <span class="finder-kicker">Find Your Journey</span>
+      <h2 class="finder-title">Choose a feeling, or choose a place.</h2>
+      <p class="finder-description">
+        Begin with the kind of escape you are imagining, or let a destination
+        lead the way. Your selection will narrow the journeys below.
       </p>
+    </div>
 
+    <div class="finder-box">
+      <div class="finder-mode" role="tablist" aria-label="Journey search mode">
+        <button class="mode-button active" type="button" data-mode="type">By Type</button>
+        <button class="mode-button" type="button" data-mode="place">By Place</button>
+      </div>
+
+      <div class="finder-fields" id="type-fields">
+        <div class="finder-field">
+          <label for="type-select">Journey Type</label>
+          <select id="type-select">
+            <option value="all">All types</option>
+            <option value="Beach">Beach</option>
+            <option value="Mountain">Mountain</option>
+            <option value="Cruise">Cruise</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Romantic">Romantic</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="finder-fields" id="place-fields" style="display:none;">
+        <div class="finder-field">
+          <label for="continent-select">Continent</label>
+          <select id="continent-select">
+            <option value="all">All continents</option>
+          </select>
+        </div>
+
+        <div class="finder-field">
+          <label for="country-select">Country</label>
+          <select id="country-select" disabled>
+            <option value="all">All countries</option>
+          </select>
+        </div>
+
+        <div class="finder-field">
+          <label for="city-select">City</label>
+          <select id="city-select" disabled>
+            <option value="all">All cities</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="finder-status" id="finder-status" aria-live="polite">
+        Showing all journeys.
+      </div>
     </div>
 
   </section>
 
-<!-- JOURNEY HIGHLIGHTS -->
+  <!-- JOURNEY COLLECTION -->
+  <section class="journey-collection" id="journey-collection">
 
-<section class="journey-highlights">
-
-  <article class="highlight-row">
-
-    <div class="highlight-image">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop" alt="Alpine lake">
+    <div class="collection-heading">
+      <span class="collection-kicker">Curated Journeys</span>
+      <h2 class="collection-title">The world, thoughtfully arranged.</h2>
     </div>
 
-    <div class="highlight-text">
-      <span class="highlight-label">TRAVEL&nbsp;&nbsp;BEST OF THE WORLD</span>
+    <!--
+      BACK-END DATA MODEL
+      Each card contains:
+      - data-type: Beach | Mountain | Cruise | Adventure | Romantic
+      - data-continent
+      - data-country
+      - data-city
 
-    <h2 class="yatra-title">
-        <a href="southindia.html">Southern India: Backwaters, Boulders and Ancient Rhythms</a>
-    </h2>
+      Add hundreds of cards using the same attributes later.
+      The finder will automatically filter them.
+    -->
 
-      <p>
-        Wander a stretch of India where geography itself seems to tell stories — houseboats gliding through the still green channels of Alleppey, red cliffs dropping into the Arabian Sea at Varkala, and the surreal boulder-strewn ruins of Hampi scattered like the remains of a forgotten giant's game. Climb into the cool tea-covered hills of Ooty, where colonial-era trains still wind through the Nilgiris, and pause at sanctuaries where elephants move unhurried through the trees. Feel the floor shake with the stamping footwork of Kalaripayattu, one of the world's oldest martial arts, then sit spellbound as Kathakali performers transform into gods and demons through paint, expression and gesture alone. Explore the palace grandeur of Mysuru, still lit like a jewel after dark, before trading temple bells for French-shuttered streets and seaside promenades in Puducherry — a coastal town where two cultures have long shared the same sunset.
-        
-      </p>
+    <article class="journey-card"
+      data-type="Beach,Romantic"
+      data-continent="Europe"
+      data-country="Italy"
+      data-city="Positano">
+
+      <div class="journey-card-image">
+        <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&auto=format&fit=crop"
+             alt="Positano on the Amalfi Coast">
+      </div>
+
+      <div class="journey-card-details">
+        <div class="journey-card-top">
+          <span class="journey-card-label">Tailormade Journey</span>
+          <h3 class="journey-card-title">Amalfi Coast: An Italian Summer</h3>
+          <span class="journey-card-duration">8 Days</span>
+
+          <p class="journey-card-description">
+            Cliffside villages, slow lunches, hidden coves and evenings overlooking
+            the Tyrrhenian Sea.
+          </p>
+
+          <div class="journey-card-meta">
+            <span><strong>Route</strong> &nbsp; Positano · Amalfi · Ravello · Capri</span>
+            <span><strong>Journey</strong> &nbsp; Beach · Romantic</span>
+          </div>
+        </div>
+
+        <div class="journey-card-bottom">
+          <span class="journey-price">From <strong>$6,495</strong> per person.</span>
+          <button class="journey-button" type="button">Refine Journey</button>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="journey-card"
+      data-type="Mountain,Adventure,Romantic"
+      data-continent="Asia"
+      data-country="Japan"
+      data-city="Kyoto">
+
+      <div class="journey-card-image">
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&auto=format&fit=crop"
+             alt="Kyoto temple and mountain landscape">
+      </div>
+
+      <div class="journey-card-details">
+        <div class="journey-card-top">
+          <span class="journey-card-label">Tailormade Journey</span>
+          <h3 class="journey-card-title">Kyoto &amp; The Japanese Alps</h3>
+          <span class="journey-card-duration">10 Days</span>
+
+          <p class="journey-card-description">
+            Ancient streets and quiet gardens give way to mountain villages,
+            onsens and a slower side of Japan.
+          </p>
+
+          <div class="journey-card-meta">
+            <span><strong>Route</strong> &nbsp; Kyoto · Kanazawa · Takayama · Hakone</span>
+            <span><strong>Journey</strong> &nbsp; Mountain · Adventure · Romantic</span>
+          </div>
+        </div>
+
+        <div class="journey-card-bottom">
+          <span class="journey-price">From <strong>$7,195</strong> per person.</span>
+          <button class="journey-button" type="button">Refine Journey</button>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="journey-card"
+      data-type="Cruise,Beach,Romantic"
+      data-continent="Africa"
+      data-country="South Africa"
+      data-city="Cape Town">
+
+      <div class="journey-card-image">
+        <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1200&auto=format&fit=crop"
+             alt="Cape Town coastline and mountains">
+      </div>
+
+      <div class="journey-card-details">
+        <div class="journey-card-top">
+          <span class="journey-card-label">Tailormade Journey</span>
+          <h3 class="journey-card-title">Cape Town, Coast &amp; The Winelands</h3>
+          <span class="journey-card-duration">9 Days</span>
+
+          <p class="journey-card-description">
+            Ocean horizons, dramatic mountains, vineyard lunches and a private
+            escape along South Africa's most celebrated coastline.
+          </p>
+
+          <div class="journey-card-meta">
+            <span><strong>Route</strong> &nbsp; Cape Town · Stellenbosch · Franschhoek</span>
+            <span><strong>Journey</strong> &nbsp; Cruise · Beach · Romantic</span>
+          </div>
+        </div>
+
+        <div class="journey-card-bottom">
+          <span class="journey-price">From <strong>$5,895</strong> per person.</span>
+          <button class="journey-button" type="button">Refine Journey</button>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="journey-card"
+      data-type="Beach,Cruise,Romantic"
+      data-continent="Oceania"
+      data-country="French Polynesia"
+      data-city="Bora Bora">
+
+      <div class="journey-card-image">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop"
+             alt="Tropical lagoon and beach in Bora Bora">
+      </div>
+
+      <div class="journey-card-details">
+        <div class="journey-card-top">
+          <span class="journey-card-label">Tailormade Journey</span>
+          <h3 class="journey-card-title">Bora Bora: Blue Beyond</h3>
+          <span class="journey-card-duration">7 Days</span>
+
+          <p class="journey-card-description">
+            A private island escape of turquoise lagoons, overwater stays and
+            unhurried days designed entirely around the sea.
+          </p>
+
+          <div class="journey-card-meta">
+            <span><strong>Route</strong> &nbsp; Bora Bora · Tahiti · Moorea</span>
+            <span><strong>Journey</strong> &nbsp; Beach · Cruise · Romantic</span>
+          </div>
+        </div>
+
+        <div class="journey-card-bottom">
+          <span class="journey-price">From <strong>$8,495</strong> per person.</span>
+          <button class="journey-button" type="button">Refine Journey</button>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="journey-card"
+      data-type="Adventure,Mountain"
+      data-continent="South America"
+      data-country="Chile"
+      data-city="Torres del Paine">
+
+      <div class="journey-card-image">
+        <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=1200&auto=format&fit=crop"
+             alt="Patagonia mountains and wilderness">
+      </div>
+
+      <div class="journey-card-details">
+        <div class="journey-card-top">
+          <span class="journey-card-label">Tailormade Journey</span>
+          <h3 class="journey-card-title">Patagonia: Edge of the Wild</h3>
+          <span class="journey-card-duration">11 Days</span>
+
+          <p class="journey-card-description">
+            Vast landscapes, glacial lakes and intimate wilderness lodges at the
+            edge of one of the world's great natural frontiers.
+          </p>
+
+          <div class="journey-card-meta">
+            <span><strong>Route</strong> &nbsp; Santiago · Puerto Natales · Torres del Paine</span>
+            <span><strong>Journey</strong> &nbsp; Adventure · Mountain</span>
+          </div>
+        </div>
+
+        <div class="journey-card-bottom">
+          <span class="journey-price">From <strong>$6,995</strong> per person.</span>
+          <button class="journey-button" type="button">Refine Journey</button>
+        </div>
+      </div>
+    </article>
+
+    <div class="no-results" id="no-results">
+      No journeys match your current selection. Try a broader destination or journey type.
     </div>
 
-  </article>
-
-
-  <article class="highlight-row reverse">
-
-    <div class="highlight-image">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop" alt="Forest retreat">
-    </div>
-
-    <div class="highlight-text">
-      <span class="highlight-label">TRAVEL&nbsp;&nbsp;BEST OF THE WORLD</span>
-
-      <h2>
-        Wellness retreats designed for complete rejuvenation
-      </h2>
-
-      <p>
-        Wander a stretch of India where geography itself seems to tell stories — houseboats gliding through the still green channels of Alleppey, red cliffs dropping into the Arabian Sea at Varkala, and the surreal boulder-strewn ruins of Hampi scattered like the remains of a forgotten giant's game. Climb into the cool tea-covered hills of Ooty, where colonial-era trains still wind through the Nilgiris, and pause at sanctuaries where elephants move unhurried through the trees. Feel the floor shake with the stamping footwork of Kalaripayattu, one of the world's oldest martial arts, then sit spellbound as Kathakali performers transform into gods and demons through paint, expression and gesture alone. Explore the palace grandeur of Mysuru, still lit like a jewel after dark, before trading temple bells for French-shuttered streets and seaside promenades in Puducherry — a coastal town where two cultures have long shared the same sunset.
-      </p>
-    </div>
-
-  </article>
-
-</section>
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -632,6 +703,228 @@ header::before {
     </div>
   </footer>
 
+
+
+
+<script>
+  /*
+    MaidenWins Journey Finder
+    -------------------------
+    The cards are intentionally data-driven.
+
+    For future expansion, add cards with:
+      data-type="Beach,Romantic"
+      data-continent="Europe"
+      data-country="Italy"
+      data-city="Positano"
+
+    The filter will automatically discover the new values.
+  */
+
+  const journeyCards = Array.from(document.querySelectorAll(".journey-card"));
+  const typeFields = document.getElementById("type-fields");
+  const placeFields = document.getElementById("place-fields");
+
+  const typeSelect = document.getElementById("type-select");
+  const continentSelect = document.getElementById("continent-select");
+  const countrySelect = document.getElementById("country-select");
+  const citySelect = document.getElementById("city-select");
+
+  const finderStatus = document.getElementById("finder-status");
+  const noResults = document.getElementById("no-results");
+  const modeButtons = document.querySelectorAll(".mode-button");
+
+  let currentMode = "type";
+
+  const uniqueSorted = values =>
+    [...new Set(values.filter(Boolean))].sort((a, b) =>
+      a.localeCompare(b)
+    );
+
+  const cardData = journeyCards.map(card => ({
+    card,
+    types: card.dataset.type.split(",").map(v => v.trim()),
+    continent: card.dataset.continent.trim(),
+    country: card.dataset.country.trim(),
+    city: card.dataset.city.trim()
+  }));
+
+  function setOptions(select, values, allLabel) {
+    select.innerHTML = `<option value="all">${allLabel}</option>`;
+
+    uniqueSorted(values).forEach(value => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option);
+    });
+  }
+
+  function updateCountryOptions() {
+    const continent = continentSelect.value;
+
+    const matching = cardData.filter(item =>
+      continent === "all" || item.continent === continent
+    );
+
+    setOptions(
+      countrySelect,
+      matching.map(item => item.country),
+      "All countries"
+    );
+
+    countrySelect.disabled = continent === "all";
+    citySelect.innerHTML = '<option value="all">All cities</option>';
+    citySelect.disabled = true;
+  }
+
+  function updateCityOptions() {
+    const continent = continentSelect.value;
+    const country = countrySelect.value;
+
+    const matching = cardData.filter(item =>
+      (continent === "all" || item.continent === continent) &&
+      (country === "all" || item.country === country)
+    );
+
+    setOptions(
+      citySelect,
+      matching.map(item => item.city),
+      "All cities"
+    );
+
+    citySelect.disabled = country === "all";
+  }
+
+  function showAllCards() {
+    journeyCards.forEach(card => card.classList.remove("is-hidden"));
+    noResults.style.display = "none";
+    finderStatus.textContent = `Showing all ${journeyCards.length} journeys.`;
+  }
+
+  function applyTypeFilter() {
+    const selectedType = typeSelect.value;
+
+    let visible = 0;
+
+    cardData.forEach(item => {
+      const matches =
+        selectedType === "all" || item.types.includes(selectedType);
+
+      item.card.classList.toggle("is-hidden", !matches);
+
+      if (matches) visible++;
+    });
+
+    noResults.style.display = visible ? "none" : "block";
+
+    if (selectedType === "all") {
+      finderStatus.textContent = `Showing all ${visible} journeys.`;
+    } else {
+      finderStatus.textContent =
+        `Showing ${visible} ${selectedType.toLowerCase()} journey${visible === 1 ? "" : "s"}.`;
+    }
+  }
+
+  function applyPlaceFilter() {
+    const continent = continentSelect.value;
+    const country = countrySelect.value;
+    const city = citySelect.value;
+
+    let visible = 0;
+
+    cardData.forEach(item => {
+      const matches =
+        (continent === "all" || item.continent === continent) &&
+        (country === "all" || item.country === country) &&
+        (city === "all" || item.city === city);
+
+      item.card.classList.toggle("is-hidden", !matches);
+
+      if (matches) visible++;
+    });
+
+    noResults.style.display = visible ? "none" : "block";
+
+    if (continent === "all") {
+      finderStatus.textContent = `Showing all ${visible} journeys.`;
+    } else {
+      const place = [city !== "all" ? city : "", country !== "all" ? country : "", continent !== "all" ? continent : ""]
+        .filter(Boolean)
+        .join(", ");
+
+      finderStatus.textContent = `Showing ${visible} journey${visible === 1 ? "" : "s"} in ${place}.`;
+    }
+  }
+
+  function setMode(mode) {
+    currentMode = mode;
+
+    modeButtons.forEach(button => {
+      button.classList.toggle("active", button.dataset.mode === mode);
+    });
+
+    const typeMode = mode === "type";
+
+    typeFields.style.display = typeMode ? "grid" : "none";
+    placeFields.style.display = typeMode ? "none" : "grid";
+
+    if (typeMode) {
+      applyTypeFilter();
+    } else {
+      applyPlaceFilter();
+    }
+  }
+
+  // Populate the initial continent list from the card data.
+  setOptions(
+    continentSelect,
+    cardData.map(item => item.continent),
+    "All continents"
+  );
+
+  modeButtons.forEach(button => {
+    button.addEventListener("click", () => setMode(button.dataset.mode));
+  });
+
+  typeSelect.addEventListener("change", applyTypeFilter);
+
+  continentSelect.addEventListener("change", () => {
+    updateCountryOptions();
+    applyPlaceFilter();
+  });
+
+  countrySelect.addEventListener("change", () => {
+    updateCityOptions();
+    applyPlaceFilter();
+  });
+
+  citySelect.addEventListener("change", applyPlaceFilter);
+
+  /*
+    IntersectionObserver:
+    This gives the collection a clean foundation for hundreds of cards.
+    Images are lazy-loaded by the browser, while the observer can later
+    be extended to progressively inject cards from a JSON/API source.
+  */
+  const cardImages = document.querySelectorAll(".journey-card-image img");
+
+  if ("IntersectionObserver" in window) {
+    const imageObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.loading = "lazy";
+          imageObserver.unobserve(img);
+        }
+      });
+    }, { rootMargin: "300px 0px" });
+
+    cardImages.forEach(img => imageObserver.observe(img));
+  } else {
+    cardImages.forEach(img => img.loading = "lazy");
+  }
+</script>
 
 
 <script>
