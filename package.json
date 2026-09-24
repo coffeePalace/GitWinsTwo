@@ -1,5 +1,8 @@
 {
   "name": "winstwo",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "googleapis": "^181.0.0"
+  }
 }

@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MW | Luxury Travel Experiences</title>
+  <meta name="description" content="MaidenWins creates bespoke luxury travel experiences, curated holidays, private tours, and unforgettable journeys around the world." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/png" href="/Favicon.png" />
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f5ef;
+      --text-primary: #1f2937;
+      --text-muted: #6b7280;
+      --accent: #b89258;
+      --card-bg: #f4efe6;
+      --dark: #111827;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(184,146,88,0.08), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(184,146,88,0.06), transparent 30%),
+        var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ======================
+       HEADER (unchanged)
+    ====================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      height: 50px;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      background: rgba(248,245,239,0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: none;
+      overflow: visible;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 0.95rem;
+      font-weight: 400;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    header a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0%;
+      height: 1.5px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      transition: width 0.35s ease;
+    }
+
+    header a:hover {
+      color: #111827;
+    }
+
+    header a:hover::after {
+      width: 100%;
+    }
+
+    .logo {
+      text-align: center;
+    }
+
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .logo a::after {
+      display: none;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(320px, 45%);
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,146,88,0.45), rgba(184,146,88,0.85), rgba(184,146,88,0.45), transparent);
+    }
+
+    /* ======================
+       HERO (unchanged)
+    ====================== */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 80vh;
+      padding: 100px 24px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(15,20,30,0.45), rgba(15,20,30,0.55));
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 0 3px 15px rgba(0,0,0,.45);
+    }
+
+    .divider {
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,.9), transparent);
+      margin: 0 auto 32px;
+    }
+
+    /* ======================
+       FILTER / SELECTOR SECTION
+    ====================== */
+    .filter-section {
+      padding: 70px 5% 50px;
+      background: rgba(255,255,255,0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .filter-intro {
+      text-align: center;
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .filter-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .filter-intro p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .mode-toggle {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 36px;
+      background: rgba(184,146,88,0.08);
+      padding: 6px;
+      border-radius: 100px;
+    }
+
+    .mode-btn {
+      border: none;
+      background: transparent;
+      padding: 12px 32px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #4b5563;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .mode-btn.active {
+      background: var(--dark);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+
+    .filter-panels {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .filter-panel {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .filter-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .type-chip {
+      border: 1px solid rgba(184,146,88,0.35);
+      background: #fff;
+      padding: 18px 12px;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .type-chip:hover {
+      border-color: var(--accent);
+      background: rgba(184,146,88,0.06);
+    }
+
+    .type-chip.active {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    .type-chip i {
+      display: block;
+      margin: 0 auto 10px;
+      width: 28px;
+      height: 28px;
+      stroke-width: 1.5;
+    }
+
+    .place-cascade {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .cascade-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cascade-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5b6470;
+      min-width: 90px;
+    }
+
+    .place-chip {
+      border: 1px solid rgba(184,146,88,0.3);
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .place-chip:hover {
+      border-color: var(--accent);
+    }
+
+    .place-chip.active {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    .place-chip.disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .reset-btn {
+      margin-top: 28px;
+      background: transparent;
+      border: 1px solid rgba(184,146,88,0.4);
+      color: var(--accent);
+      padding: 10px 28px;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .reset-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ======================
+       DESTINATION CARDS
+    ====================== */
+    .destinations {
+      padding: 60px 5% 100px;
+      background: rgba(248,245,239,0.78);
+    }
+
+    .destinations-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .destinations-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .destinations-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dest-card {
+      display: grid;
+      grid-template-columns: minmax(280px, 42%) 1fr;
+      background: var(--card-bg);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .dest-card.hidden {
+      display: none;
+    }
+
+    .card-image {
+      position: relative;
+      min-height: 320px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--dark);
+      border-radius: 2px;
+    }
+
+    .card-content {
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #5b6470;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.55rem, 2.4vw, 2.05rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .card-duration {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+
+    .card-desc {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: #4b5563;
+      margin-bottom: 22px;
+      max-width: 520px;
+    }
+
+    .card-route {
+      font-size: 0.82rem;
+      color: #6b7280;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .card-route span {
+      font-weight: 500;
+      color: #374151;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(184,146,88,0.18);
+    }
+
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .card-price span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .refine-btn {
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      padding: 12px 26px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .refine-btn:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      display: none;
+    }
+
+    .no-results.visible {
+      display: block;
+    }
+
+    /* ======================
+       FOOTER
+    ====================== */
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .copyright {
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
+    /* ======================
+       RESPONSIVE
+    ====================== */
+    @media (max-width: 900px) {
+      .type-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .dest-card {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image {
+        min-height: 260px;
+      }
+
+      .card-content {
+        padding: 28px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .type-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mode-btn {
+        padding: 10px 20px;
+        font-size: 0.88rem;
+      }
+
+      header {
+        height: 40px;
+        padding: 0 10px;
+      }
+
+      header a {
+        font-size: 0.58rem;
+      }
+
+      .logo a {
+        font-size: 1.1rem;
+      }
+
+      .brand {
+        font-size: 3rem;
+      }
+
+      .hero {
+        padding: 70px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-left">
+      <a href="explore.html">Explore</a>
+    </div>
+    <div class="logo">
+      <a href="index.html">MaidenWins</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO (kept identical) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="brand">Finest Escapes with MaidenWins</h1>
+      <div class="divider"></div>
+    </div>
+  </section>
+
+  <!-- NEW FILTER SECTION -->
+  <section class="filter-section">
+    <div class="filter-intro">
+      <h2>Find Your Perfect Journey</h2>
+      <p>Select by experience type or begin with a place. We will reveal only the journeys that match.</p>
+    </div>
+
+    <div class="mode-toggle">
+      <button class="mode-btn active" data-mode="type">By Type</button>
+      <button class="mode-btn" data-mode="place">By Place</button>
+    </div>
+
+    <div class="filter-panels">
+      <!-- TYPE PANEL -->
+      <div class="filter-panel active" id="panel-type">
+        <div class="type-grid">
+          <div class="type-chip" data-type="Beach">
+            <i data-lucide="waves"></i>
+            Beach
+          </div>
+          <div class="type-chip" data-type="Mountain">
+            <i data-lucide="mountain"></i>
+            Mountain
+          </div>
+          <div class="type-chip" data-type="Cruise">
+            <i data-lucide="ship"></i>
+            Cruise
+          </div>
+          <div class="type-chip" data-type="Adventure">
+            <i data-lucide="compass"></i>
+            Adventure
+          </div>
+          <div class="type-chip" data-type="Romantic">
+            <i data-lucide="heart"></i>
+            Romantic
+          </div>
+        </div>
+      </div>
+
+      <!-- PLACE PANEL -->
+      <div class="filter-panel" id="panel-place">
+        <div class="place-cascade">
+          <div class="cascade-row" id="continent-row">
+            <span class="cascade-label">Continent</span>
+            <button class="place-chip" data-level="continent" data-value="Asia">Asia</button>
+            <button class="place-chip" data-level="continent" data-value="Europe">Europe</button>
+            <button class="place-chip" data-level="continent" data-value="Africa">Africa</button>
+            <button class="place-chip" data-level="continent" data-value="South America">South America</button>
+            <button class="place-chip" data-level="continent" data-value="Oceania">Oceania</button>
+          </div>
+
+          <div class="cascade-row" id="country-row" style="display:none;">
+            <span class="cascade-label">Country</span>
+            <!-- populated by JS -->
+          </div>
+
+          <div class="cascade-row" id="city-row" style="display:none;">
+            <span class="cascade-label">City</span>
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="reset-btn" id="resetFilters">Clear all filters</button>
+  </section>
+
+  <!-- DESTINATION CARDS -->
+  <section class="destinations">
+    <div class="destinations-header">
+      <h2>Curated Journeys</h2>
+      <p>Five sample escapes across the world — ready for filtering</p>
+    </div>
+
+    <div class="cards-container" id="cardsContainer">
+
+      <!-- 1. Kerala Backwaters – Asia / India / Alleppey – Beach + Cruise -->
+      <article class="dest-card"
+               data-type="Beach,Cruise"
+               data-continent="Asia"
+               data-country="India"
+               data-city="Alleppey">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=900&auto=format&fit=crop" alt="Kerala houseboat">
+          <span class="card-badge">Tailormade Journeys</span>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">Asia · India · Alleppey</div>
+          <h3 class="card-title">Secrets of Kerala’s Backwaters</h3>
+          <div class="card-duration">9 DAYS</div>
+          <p class="card-desc">Glide through scenic lagoons and lush landscapes on an evocative journey through the tip of the country.</p>
+          <div class="card-route"><span>Route</span> · Kochi · Munnar · Periyar · Kumarakom</div>
+          <div class="card-footer">
+            <div class="card-price">From $5,195 <span>per person</span></div>
+            <button class="refine-btn">Refine Journey</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Swiss Alps – Europe / Switzerland / Zermatt – Mountain + Romantic -->
+      <article class="dest-card"
+               data-type="Mountain,Romantic"
+               data-continent="Europe"
+               data-country="Switzerland"
+               data-city="Zermatt">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=900&auto=format&fit=crop" alt="Swiss Alps">
+          <span class="card-badge">Alpine Escape</span>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">Europe · Switzerland · Zermatt</div>
+          <h3 class="card-title">Matterhorn & Alpine Romance</h3>
+          <div class="card-duration">8 DAYS</div>
+          <p class="card-desc">Private chalets, glacier walks and candle-lit dinners beneath Europe’s most iconic peak.</p>
+          <div class="card-route"><span>Route</span> · Zurich · Lucerne · Zermatt · Geneva</div>
+          <div class="card-footer">
+            <div class="card-price">From $9,850 <span>per person</span></div>
+            <button class="refine-btn">Refine Journey</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Serengeti – Africa / Tanzania / Seronera – Adventure -->
+      <article class="dest-card"
+               data-type="Adventure"
+               data-continent="Africa"
+               data-country="Tanzania"
+               data-city="Seronera">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&auto=format&fit=crop" alt="Serengeti">
+          <span class="card-badge">Wildlife Odyssey</span>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">Africa · Tanzania · Seronera</div>
+          <h3 class="card-title">Great Migration & Private Safaris</h3>
+          <div class="card-duration">11 DAYS</div>
+          <p class="card-desc">Witness the greatest wildlife spectacle on Earth from exclusive tented camps and private game drives.</p>
+          <div class="card-route"><span>Route</span> · Arusha · Ngorongoro · Serengeti · Tarangire</div>
+          <div class="card-footer">
+            <div class="card-price">From $12,400 <span>per person</span></div>
+            <button class="refine-btn">Refine Journey</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Patagonia – South America / Chile / Torres del Paine – Adventure + Mountain -->
+      <article class="dest-card"
+               data-type="Adventure,Mountain"
+               data-continent="South America"
+               data-country="Chile"
+               data-city="Torres del Paine">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&auto=format&fit=crop" alt="Patagonia">
+          <span class="card-badge">Expedition</span>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">South America · Chile · Torres del Paine</div>
+          <h3 class="card-title">Patagonia: Glaciers & Fjords</h3>
+          <div class="card-duration">12 DAYS</div>
+          <p class="card-desc">Trek among granite towers, sail past calving glaciers and stay in remote eco-lodges at the end of the world.</p>
+          <div class="card-route"><span>Route</span> · Santiago · Punta Arenas · Torres del Paine · Puerto Natales</div>
+          <div class="card-footer">
+            <div class="card-price">From $11,200 <span>per person</span></div>
+            <button class="refine-btn">Refine Journey</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. Bora Bora – Oceania / French Polynesia / Bora Bora – Beach + Romantic -->
+      <article class="dest-card"
+               data-type="Beach,Romantic"
+               data-continent="Oceania"
+               data-country="French Polynesia"
+               data-city="Bora Bora">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop" alt="Bora Bora">
+          <span class="card-badge">Overwater Escape</span>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">Oceania · French Polynesia · Bora Bora</div>
+          <h3 class="card-title">Bora Bora Overwater Romance</h3>
+          <div class="card-duration">7 DAYS</div>
+          <p class="card-desc">Private lagoon villas, sunset catamaran sails and barefoot luxury on one of the world’s most beautiful islands.</p>
+          <div class="card-route"><span>Route</span> · Papeete · Moorea · Bora Bora</div>
+          <div class="card-footer">
+            <div class="card-price">From $8,950 <span>per person</span></div>
+            <button class="refine-btn">Refine Journey</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="no-results" id="noResults">
+      No journeys match your current selection. Try adjusting the filters.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="copyright">
+      © <span id="year"></span> MaidenWins. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Lucide icons
+    lucide.createIcons();
+
+    // Hero rotating images (kept identical)
+    const heroImages = [
+      "https://images.unsplash.com/photo-1624554305378-0f440dd3a8c1?q=80&w=2925&auto=format&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1697730430306-7c8d36cb3722?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=2232&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1641666017842-f94246ef2961?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1593872356907-d67e8587d0f9?q=80&w=1048&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1610817201767-793a9130ce07?q=80&w=3016&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1575305327780-a887f284432f?q=80&w=3131&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1546778316-dfda79f1c84e?q=80&w=2940&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1659410553816-fa68a5d1bd94?q=80&w=2944&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1711192702535-eac61a78ecb0?q=80&w=2906&auto=format&fit=crop"
+    ];
+    const imageIndex = new Date().getMinutes() % heroImages.length;
+    document.querySelector(".hero").style.backgroundImage = `url("${heroImages[imageIndex]}")`;
+
+    // ======================
+    // FILTER LOGIC
+    // ======================
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const panels = {
+      type: document.getElementById('panel-type'),
+      place: document.getElementById('panel-place')
+    };
+    const typeChips = document.querySelectorAll('.type-chip');
+    const cards = document.querySelectorAll('.dest-card');
+    const noResults = document.getElementById('noResults');
+    const resetBtn = document.getElementById('resetFilters');
+
+    // Place hierarchy data (for the 5 sample cards + future expansion)
+    const placeData = {
+      Asia: {
+        India: ['Alleppey', 'Kochi', 'Munnar']
+      },
+      Europe: {
+        Switzerland: ['Zermatt', 'Zurich', 'Lucerne']
+      },
+      Africa: {
+        Tanzania: ['Seronera', 'Arusha', 'Ngorongoro']
+      },
+      'South America': {
+        Chile: ['Torres del Paine', 'Santiago', 'Punta Arenas']
+      },
+      Oceania: {
+        'French Polynesia': ['Bora Bora', 'Papeete', 'Moorea']
+      }
+    };
+
+    let currentMode = 'type';
+    let selectedType = null;
+    let selectedContinent = null;
+    let selectedCountry = null;
+    let selectedCity = null;
+
+    // Mode toggle
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMode = btn.dataset.mode;
+
+        Object.values(panels).forEach(p => p.classList.remove('active'));
+        panels[currentMode].classList.add('active');
+
+        // Reset opposite mode
+        if (currentMode === 'type') {
+          selectedContinent = selectedCountry = selectedCity = null;
+          clearPlaceUI();
+        } else {
+          selectedType = null;
+          typeChips.forEach(c => c.classList.remove('active'));
+        }
+        applyFilters();
+      });
+    });
+
+    // Type chips
+    typeChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const isActive = chip.classList.contains('active');
+        typeChips.forEach(c => c.classList.remove('active'));
+        if (!isActive) {
+          chip.classList.add('active');
+          selectedType = chip.dataset.type;
+        } else {
+          selectedType = null;
+        }
+        applyFilters();
+      });
+    });
+
+    // Place cascade
+    const continentRow = document.getElementById('continent-row');
+    const countryRow = document.getElementById('country-row');
+    const cityRow = document.getElementById('city-row');
+
+    continentRow.addEventListener('click', e => {
+      if (!e.target.classList.contains('place-chip')) return;
+      const val = e.target.dataset.value;
+
+      // toggle
+      if (selectedContinent === val) {
+        selectedContinent = selectedCountry = selectedCity = null;
+        clearPlaceUI();
+        applyFilters();
+        return;
+      }
+
+      selectedContinent = val;
+      selectedCountry = selectedCity = null;
+
+      // highlight
+      continentRow.querySelectorAll('.place-chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active');
+
+      // populate countries
+      countryRow.innerHTML = '<span class="cascade-label">Country</span>';
+      const countries = Object.keys(placeData[val] || {});
+      countries.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = 'place-chip';
+        btn.dataset.level = 'country';
+        btn.dataset.value = c;
+        btn.textContent = c;
+        countryRow.appendChild(btn);
+      });
+      countryRow.style.display = 'flex';
+      cityRow.style.display = 'none';
+      cityRow.innerHTML = '';
+
+      applyFilters();
+    });
+
+    countryRow.addEventListener('click', e => {
+      if (!e.target.classList.contains('place-chip')) return;
+      const val = e.target.dataset.value;
+
+      if (selectedCountry === val) {
+        selectedCountry = selectedCity = null;
+        countryRow.querySelectorAll('.place-chip').forEach(c => c.classList.remove('active'));
+        cityRow.style.display = 'none';
+        cityRow.innerHTML = '';
+        applyFilters();
+        return;
+      }
+
+      selectedCountry = val;
+      selectedCity = null;
+
+      countryRow.querySelectorAll('.place-chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active');
+
+      // populate cities
+      cityRow.innerHTML = '<span class="cascade-label">City</span>';
+      const cities = placeData[selectedContinent][val] || [];
+      cities.forEach(city => {
+        const btn = document.createElement('button');
+        btn.className = 'place-chip';
+        btn.dataset.level = 'city';
+        btn.dataset.value = city;
+        btn.textContent = city;
+        cityRow.appendChild(btn);
+      });
+      cityRow.style.display = 'flex';
+
+      applyFilters();
+    });
+
+    cityRow.addEventListener('click', e => {
+      if (!e.target.classList.contains('place-chip')) return;
+      const val = e.target.dataset.value;
+
+      if (selectedCity === val) {
+        selectedCity = null;
+        cityRow.querySelectorAll('.place-chip').forEach(c => c.classList.remove('active'));
+      } else {
+        selectedCity = val;
+        cityRow.querySelectorAll('.place-chip').forEach(c => c.classList.remove('active'));
+        e.target.classList.add('active');
+      }
+      applyFilters();
+    });
+
+    function clearPlaceUI() {
+      continentRow.querySelectorAll('.place-chip').forEach(c => c.classList.remove('active'));
+      countryRow.style.display = 'none';
+      countryRow.innerHTML = '';
+      cityRow.style.display = 'none';
+      cityRow.innerHTML = '';
+    }
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        let show = true;
+
+        if (currentMode === 'type' && selectedType) {
+          const types = (card.dataset.type || '').split(',');
+          if (!types.includes(selectedType)) show = false;
+        }
+
+        if (currentMode === 'place') {
+          if (selectedContinent && card.dataset.continent !== selectedContinent) show = false;
+          if (selectedCountry && card.dataset.country !== selectedCountry) show = false;
+          if (selectedCity && card.dataset.city !== selectedCity) show = false;
+        }
+
+        if (show) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      noResults.classList.toggle('visible', visibleCount === 0);
+    }
+
+    // Reset
+    resetBtn.addEventListener('click', () => {
+      selectedType = selectedContinent = selectedCountry = selectedCity = null;
+      typeChips.forEach(c => c.classList.remove('active'));
+      clearPlaceUI();
+      applyFilters();
+    });
+  </script>
+
+</body>
+</html>
