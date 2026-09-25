@@ -738,7 +738,22 @@
       if (isNaN(number)) return '';           // still invalid → show nothing
 
       const symbol = (currency === 'USD' || !currency) ? '$' : currency + ' ';
-      return `From ${symbol}${number.toLocaleString()} <span>per person</span>`;
+      return 'From ${symbol}${number.toLocaleString()} <span>per person</span>';
+    }
+
+    // Create a clean URL slug automatically from the Journey Name.
+    // Example:
+    // "Secrets of Kerala's Backwaters" → "secrets-of-keralas-backwaters"
+    function createSlug(name) {
+      return String(name || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
     }
 
     function createCard(j) {
@@ -746,7 +761,9 @@
       const meta = [j.Continent, j.Country, j.City].filter(Boolean).join(' · ');
       const route = j['Cities Covered'] || '';
       const duration = j['Duration (Days)'] ? `${j['Duration (Days)']} DAYS` : '';
-      const journeyId = j['Journey ID'] || '';
+
+      const journeyName = j['Journey Name'] || '';
+      const journeySlug = createSlug(journeyName);
 
       return `
         <article class="dest-card"
@@ -755,20 +772,20 @@
                 data-country="${j.Country || ''}"
                 data-city="${j.City || ''}"
                 style="cursor: pointer;"
-                onclick="window.location.href='itinerary.html?id=${journeyId}'">
+                onclick="window.location.href='/${journeySlug}'">
           <div class="card-image">
-            <img src="${j['Hero Image'] || ''}" alt="${j['Journey Name'] || ''}">
+            <img src="${j['Hero Image'] || ''}" alt="${journeyName}">
             <span class="card-badge">${j.Badge || 'Journey'}</span>
           </div>
           <div class="card-content">
             <div class="card-meta">${meta}</div>
-            <h3 class="card-title">${j['Journey Name'] || ''}</h3>
+            <h3 class="card-title">${journeyName}</h3>
             <div class="card-duration">${duration}</div>
             <p class="card-desc">${j['Short Description'] || ''}</p>
             <div class="card-route"><span>Route</span> · ${route}</div>
             <div class="card-footer">
               <div class="card-price">${formatPrice(j.Price, j.Currency)}</div>
-              <button class="refine-btn" onclick="event.stopPropagation(); window.location.href='itinerary.html?id=${journeyId}'">
+              <button class="refine-btn" onclick="event.stopPropagation(); window.location.href='/${journeySlug}'">
                 Refine Journey
               </button>
             </div>
