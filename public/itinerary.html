@@ -449,12 +449,59 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const params = new URLSearchParams(window.location.search);
-    const journeyId = params.get('id');
 
-    if (!journeyId) {
-      document.getElementById('app').innerHTML = '<div class="error">No journey selected. <a href="explore.html">Back to Explore</a></div>';
+    const journeyId = params.get('id');
+    const journeySlug = params.get('slug');
+
+    if (journeyId) {
+        // Existing URL format:
+        // /itinerary.html?id=MW101
+        loadJourney(journeyId);
+
+    } else if (journeySlug) {
+        // New clean URL format:
+        // /secrets-of-keralas-backwaters
+        resolveSlug(journeySlug);
+
     } else {
-      loadJourney(journeyId);
+    document.getElementById('app').innerHTML =
+        '<div class="error">No journey selected. <a href="explore.html">Back to Explore</a></div>';
+    }
+
+    // ============================================================
+    // Resolve clean URL slug → Journey ID
+    // ============================================================
+
+    async function resolveSlug(slug) {
+        try {
+            const res = await fetch(
+                `/api/itinerary-slug?slug=${encodeURIComponent(slug)}`
+            );
+
+            if (!res.ok) {
+                throw new Error('Journey not found');
+            }
+
+            const data = await res.json();
+
+            if (!data.id) {
+                throw new Error('Journey ID not found');
+            }
+
+            // Use the existing journey-loading system
+            loadJourney(data.id);
+
+        } catch (err) {
+            console.error(err);
+
+            document.getElementById('app').innerHTML = `
+                <div class="error">
+                    Could not find this journey.<br>
+                    <a href="explore.html" style="color:var(--accent)">
+                    ← Back to Explore
+                    </a>
+                </div>`;
+        }
     }
 
     // Selected hotels: { city: hotelId }
