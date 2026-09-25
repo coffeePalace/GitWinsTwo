@@ -730,8 +730,15 @@
 
     function formatPrice(price, currency) {
       if (!price) return '';
-      const symbol = currency === 'USD' ? '$' : (currency || '');
-      return `From ${symbol}${Number(price).toLocaleString()} <span>per person</span>`;
+
+      // Remove currency symbols, commas, spaces and keep only numbers + decimal
+      const clean = String(price).replace(/[^0-9.]/g, '');
+      const number = parseFloat(clean);
+
+      if (isNaN(number)) return '';           // still invalid → show nothing
+
+      const symbol = (currency === 'USD' || !currency) ? '$' : currency + ' ';
+      return `From ${symbol}${number.toLocaleString()} <span>per person</span>`;
     }
 
     function createCard(j) {
@@ -739,13 +746,16 @@
       const meta = [j.Continent, j.Country, j.City].filter(Boolean).join(' · ');
       const route = j['Cities Covered'] || '';
       const duration = j['Duration (Days)'] ? `${j['Duration (Days)']} DAYS` : '';
+      const journeyId = j['Journey ID'] || '';
 
       return `
         <article class="dest-card"
-                 data-type="${typesAttr}"
-                 data-continent="${j.Continent || ''}"
-                 data-country="${j.Country || ''}"
-                 data-city="${j.City || ''}">
+                data-type="${typesAttr}"
+                data-continent="${j.Continent || ''}"
+                data-country="${j.Country || ''}"
+                data-city="${j.City || ''}"
+                style="cursor: pointer;"
+                onclick="window.location.href='itinerary.html?id=${journeyId}'">
           <div class="card-image">
             <img src="${j['Hero Image'] || ''}" alt="${j['Journey Name'] || ''}">
             <span class="card-badge">${j.Badge || 'Journey'}</span>
@@ -758,7 +768,9 @@
             <div class="card-route"><span>Route</span> · ${route}</div>
             <div class="card-footer">
               <div class="card-price">${formatPrice(j.Price, j.Currency)}</div>
-              <button class="refine-btn" data-id="${j['Journey ID'] || ''}">Refine Journey</button>
+              <button class="refine-btn" onclick="event.stopPropagation(); window.location.href='itinerary.html?id=${journeyId}'">
+                Refine Journey
+              </button>
             </div>
           </div>
         </article>

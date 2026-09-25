@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Journey Details | MaidenWins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/png" href="/Favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f5ef;
+      --text-primary: #1f2937;
+      --text-muted: #6b7280;
+      --accent: #b89258;
+      --card-bg: #f4efe6;
+      --dark: #111827;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(184,146,88,0.08), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(184,146,88,0.06), transparent 30%),
+        var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header – same as explore */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      height: 50px;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      background: rgba(248,245,239,0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .nav-left, .nav-right { display: flex; align-items: center; }
+    .nav-right { justify-content: flex-end; }
+    header a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 0.95rem;
+      font-weight: 400;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    header a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0%;
+      height: 1.5px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      transition: width 0.35s ease;
+    }
+    header a:hover { color: #111827; }
+    header a:hover::after { width: 100%; }
+    .logo { text-align: center; }
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #111827;
+      text-decoration: none;
+    }
+    .logo a::after { display: none; }
+    header::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(320px, 45%);
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,146,88,0.45), rgba(184,146,88,0.85), rgba(184,146,88,0.45), transparent);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,20,30,0.75) 0%, rgba(15,20,30,0.3) 50%, rgba(15,20,30,0.2) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 5% 50px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.92);
+      color: var(--dark);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    }
+    .hero-meta {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    /* Main layout */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 5% 100px;
+      width: 100%;
+    }
+
+    /* Overview */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+    .overview-text {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: #4b5563;
+      max-width: 720px;
+      margin-bottom: 50px;
+    }
+
+    /* Highlights */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 60px;
+    }
+    .highlight-card {
+      background: var(--card-bg);
+      border-radius: 4px;
+      padding: 24px 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .highlight-card i {
+      width: 28px;
+      height: 28px;
+      stroke-width: 1.5;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .highlight-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .highlight-text {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    /* Itinerary */
+    .itinerary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+    .day-card {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 90px 1fr;
+    }
+    .day-number {
+      background: var(--dark);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .day-number span {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-top: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+    .day-body {
+      padding: 26px 28px;
+    }
+    .day-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .day-city {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .day-desc {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+    .day-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .day-meta strong {
+      color: #374151;
+      font-weight: 500;
+    }
+
+    /* Hotels */
+    .hotels-section {
+      margin-bottom: 60px;
+    }
+    .city-hotels {
+      margin-bottom: 36px;
+    }
+    .city-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #5b6470;
+      margin-bottom: 14px;
+    }
+    .hotel-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .hotel-card {
+      background: #fff;
+      border: 1.5px solid rgba(184,146,88,0.25);
+      border-radius: 4px;
+      padding: 18px 18px 16px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .hotel-card:hover {
+      border-color: var(--accent);
+    }
+    .hotel-card.selected {
+      border-color: var(--dark);
+      background: #faf8f4;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .hotel-card.selected::after {
+      content: "Selected";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--dark);
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .hotel-name {
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+      padding-right: 70px;
+    }
+    .hotel-category {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .hotel-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .hotel-price {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .hotel-price.included {
+      color: #059669;
+    }
+
+    /* Price bar */
+    .price-bar {
+      position: sticky;
+      bottom: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,146,88,0.2);
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      z-index: 100;
+    }
+    .price-info {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .price-info span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .enquire-btn {
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .enquire-btn:hover {
+      background: #000;
+    }
+
+    /* Loading / Error */
+    .loading, .error {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .error { color: #b91c1c; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 20px 5%;
+      text-align: center;
+    }
+    .copyright {
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 700px) {
+      .day-card {
+        grid-template-columns: 1fr;
+      }
+      .day-number {
+        flex-direction: row;
+        gap: 8px;
+        padding: 12px;
+        font-size: 1.2rem;
+      }
+      .price-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-left">
+      <a href="explore.html">Explore</a>
+    </div>
+    <div class="logo">
+      <a href="index.html">MaidenWins</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <div id="app">
+    <div class="loading">Loading journey…</div>
+  </div>
+
+  <footer>
+    <div class="copyright">
+      © <span id="year"></span> MaidenWins. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const params = new URLSearchParams(window.location.search);
+    const journeyId = params.get('id');
+
+    if (!journeyId) {
+      document.getElementById('app').innerHTML = '<div class="error">No journey selected. <a href="explore.html">Back to Explore</a></div>';
+    } else {
+      loadJourney(journeyId);
+    }
+
+    // Selected hotels: { city: hotelId }
+    let selectedHotels = {};
+    let basePrice = 0;
+    let currency = 'USD';
+    let allHotels = [];
+    let itinerary = [];
+
+    async function loadJourney(id) {
+      try {
+        const res = await fetch(`/api/journey-detail?id=${encodeURIComponent(id)}`);
+        if (!res.ok) throw new Error('Journey not found');
+        const data = await res.json();
+        renderPage(data);
+      } catch (err) {
+        console.error(err);
+        document.getElementById('app').innerHTML = `
+          <div class="error">
+            Could not load this journey.<br>
+            <a href="explore.html" style="color:var(--accent)">← Back to Explore</a>
+          </div>`;
+      }
+    }
+
+    function formatMoney(amount) {
+      const symbol = currency === 'USD' ? '$' : currency + ' ';
+      return symbol + Number(amount).toLocaleString();
+    }
+
+    function renderPage(data) {
+      const j = data.journey;
+      itinerary = data.itinerary || [];
+      allHotels = data.hotels || [];
+      const highlights = data.highlights || [];
+
+      basePrice = parseFloat(String(j.Price).replace(/[^0-9.]/g, '')) || 0;
+      currency = j.Currency || 'USD';
+
+      // Pre-select default hotels
+      const cities = [...new Set(itinerary.map(d => d['Overnight City']).filter(Boolean))];
+      cities.forEach(city => {
+        const defaultHotel = allHotels.find(h => h.City === city && h.IsDefault);
+        if (defaultHotel) selectedHotels[city] = defaultHotel['Hotel ID'];
+      });
+
+      const heroImage = j['Hero Image'] || '';
+      const meta = [j.Continent, j.Country, j.City].filter(Boolean).join(' · ');
+      const duration = j['Duration (Days)'] ? `${j['Duration (Days)']} Days` : '';
+
+      let html = `
+        <section class="hero" style="background-image:url('${heroImage}')">
+          <div class="hero-content">
+            <div class="hero-badge">${j.Badge || 'Journey'}</div>
+            <h1 class="hero-title">${j['Journey Name'] || ''}</h1>
+            <div class="hero-meta">${meta} · ${duration}</div>
+          </div>
+        </section>
+
+        <div class="main">
+          <h2 class="section-title">Overview</h2>
+          <p class="overview-text">${j.Overview || j['Long Description'] || j['Short Description'] || ''}</p>
+      `;
+
+      // Highlights
+      if (highlights.length) {
+        html += `<h2 class="section-title">Highlights</h2><div class="highlights-grid">`;
+        highlights.forEach(h => {
+          const icon = h.Icon || 'star';
+          html += `
+            <div class="highlight-card">
+              <i data-lucide="${icon}"></i>
+              <div class="highlight-title">${h['Highlight Title'] || ''}</div>
+              <div class="highlight-text">${h['Highlight Text'] || ''}</div>
+            </div>`;
+        });
+        html += `</div>`;
+      }
+
+      // Itinerary
+      if (itinerary.length) {
+        html += `<h2 class="section-title">Day by Day</h2><div class="itinerary-list">`;
+        itinerary.forEach(day => {
+          const meals = day.Meals ? `<div><strong>Meals</strong><br>${day.Meals}</div>` : '';
+          const transfers = day.Transfers ? `<div><strong>Transfers</strong><br>${day.Transfers}</div>` : '';
+          const sight = day.Sightseeing ? `<div><strong>Sightseeing</strong><br>${day.Sightseeing.replace(/\|/g, ' · ')}</div>` : '';
+          const other = day['Other Inclusions'] ? `<div><strong>Included</strong><br>${day['Other Inclusions']}</div>` : '';
+
+          html += `
+            <div class="day-card">
+              <div class="day-number">
+                ${day['Day Number']}
+                <span>Day</span>
+              </div>
+              <div class="day-body">
+                <div class="day-title">${day['Day Title'] || ''}</div>
+                <div class="day-city">${day.City || ''}${day['Overnight City'] && day['Overnight City'] !== day.City ? ' → ' + day['Overnight City'] : ''}</div>
+                <div class="day-desc">${day.Description || ''}</div>
+                <div class="day-meta">
+                  ${sight}${transfers}${meals}${other}
+                </div>
+              </div>
+            </div>`;
+        });
+        html += `</div>`;
+      }
+
+      // Hotels
+      if (allHotels.length) {
+        html += `<div class="hotels-section"><h2 class="section-title">Choose Your Hotels</h2>`;
+        html += `<p style="color:var(--text-muted);margin-bottom:28px;max-width:600px;">Select your preferred hotel for each city. The price updates automatically.</p>`;
+
+        cities.forEach(city => {
+          const cityHotels = allHotels.filter(h => h.City === city);
+          if (!cityHotels.length) return;
+
+          // Count nights in this city
+          const nights = itinerary.filter(d => d['Overnight City'] === city).length;
+
+          html += `
+            <div class="city-hotels">
+              <div class="city-label">${city} · ${nights} night${nights !== 1 ? 's' : ''}</div>
+              <div class="hotel-options">`;
+
+          cityHotels.forEach(h => {
+            const isSelected = selectedHotels[city] === h['Hotel ID'];
+            const priceLabel = h.PricePerNight === 0
+              ? `<span class="hotel-price included">Included in base price</span>`
+              : `<span class="hotel-price">+${formatMoney(h.PricePerNight)} / night</span>`;
+
+            html += `
+              <div class="hotel-card ${isSelected ? 'selected' : ''}"
+                   data-city="${city}"
+                   data-hotel-id="${h['Hotel ID']}"
+                   onclick="selectHotel('${city}', '${h['Hotel ID']}')">
+                <div class="hotel-name">${h['Hotel Name']}</div>
+                <div class="hotel-category">${h.Category || ''}</div>
+                <div class="hotel-desc">${h['Short Description'] || ''}</div>
+                ${priceLabel}
+              </div>`;
+          });
+
+          html += `</div></div>`;
+        });
+
+        html += `</div>`;
+      }
+
+      html += `</div>`; // .main
+
+      // Sticky price bar
+      html += `
+        <div class="price-bar">
+          <div class="price-info" id="totalPrice">
+            Total from ${formatMoney(basePrice)} <span>per person</span>
+          </div>
+          <button class="enquire-btn" onclick="alert('Enquiry form coming soon')">Enquire about this journey</button>
+        </div>
+      `;
+
+      document.getElementById('app').innerHTML = html;
+      lucide.createIcons();
+      updateTotal();
+    }
+
+    function selectHotel(city, hotelId) {
+      selectedHotels[city] = hotelId;
+
+      // Update UI
+      document.querySelectorAll(`.hotel-card[data-city="${city}"]`).forEach(card => {
+        card.classList.toggle('selected', card.dataset.hotelId === hotelId);
+      });
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let extra = 0;
+
+      Object.keys(selectedHotels).forEach(city => {
+        const hotelId = selectedHotels[city];
+        const hotel = allHotels.find(h => h['Hotel ID'] === hotelId);
+        if (!hotel) return;
+
+        const nights = itinerary.filter(d => d['Overnight City'] === city).length;
+        extra += (hotel.PricePerNight || 0) * nights;
+      });
+
+      const total = basePrice + extra;
+      const el = document.getElementById('totalPrice');
+      if (el) {
+        el.innerHTML = `Total from ${formatMoney(total)} <span>per person</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
