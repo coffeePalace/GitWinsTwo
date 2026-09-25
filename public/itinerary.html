@@ -451,17 +451,36 @@
     const params = new URLSearchParams(window.location.search);
 
     const journeyId = params.get('id');
-    const journeySlug = params.get('slug');
+    let journeySlug = params.get('slug');
+
+    // If there is no query parameter, use the clean URL path.
+    // Example:
+    // /secrets-of-keralas-backwaters
+    // becomes:
+    // secrets-of-keralas-backwaters
+    if (!journeyId && !journeySlug) {
+    const path = window.location.pathname
+        .replace(/^\/+|\/+$/g, '');
+
+    // Only use the pathname as a slug if it is not a known static page.
+    const staticPaths = [
+        '',
+        'explore',
+        'journeys-made-for-unwinding',
+        'contact',
+        'in-your-service',
+        'itinerary.html'
+    ];
+
+    if (path && !staticPaths.includes(path.toLowerCase())) {
+        journeySlug = path;
+    }
+    }
 
     if (journeyId) {
-        // Existing URL format:
-        loadJourney(journeyId);
-
+    loadJourney(journeyId);
     } else if (journeySlug) {
-        // New clean URL format:
-        // /secrets-of-keralas-backwaters
-        resolveSlug(journeySlug);
-
+    resolveSlug(journeySlug);
     } else {
     document.getElementById('app').innerHTML =
         '<div class="error">No journey selected. <a href="explore.html">Back to Explore</a></div>';

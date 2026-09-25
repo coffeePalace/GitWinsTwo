@@ -738,7 +738,7 @@
       if (isNaN(number)) return '';           // still invalid → show nothing
 
       const symbol = (currency === 'USD' || !currency) ? '$' : currency + ' ';
-      return 'From ${symbol}${number.toLocaleString()} <span>per person</span>';
+      return `From ${symbol}${number.toLocaleString()} <span>per person</span>`;
     }
 
     // Create a clean URL slug automatically from the Journey Name.
